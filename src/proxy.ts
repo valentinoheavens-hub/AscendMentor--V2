@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// AscendMentor AI — Route Protection Middleware
+// AscendMentor AI — Route Protection Proxy (Next.js 16+)
 // Supabase SSR session check on every request.
 // Auth routes → redirect to /dashboard if already signed in.
 // Protected routes → redirect to /login if not signed in.
@@ -9,7 +9,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
