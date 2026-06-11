@@ -212,3 +212,50 @@
   font-weight: 600;
 }
 .btn-gold:hover { background-color: #F5C518; }
+
+/* ── Landing page ────────────────────────────────────────────────────────── */
+.landing-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.landing-glow {
+  background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(184,150,12,0.18), transparent 70%);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes fade-up-stagger {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.landing-stagger > * {
+  animation: fade-up-stagger 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.landing-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.landing-stagger > *:nth-child(2) { animation-delay: 0.15s; }
+.landing-stagger > *:nth-child(3) { animation-delay: 0.25s; }
+.landing-stagger > *:nth-child(4) { animation-delay: 0.35s; }
+.landing-stagger > *:nth-child(5) { animation-delay: 0.45s; }
+
+.landing-card {
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.landing-card:hover {
+  border-color: rgba(184,150,12,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px -12px rgba(184,150,12,0.15);
+}
+
+@keyframes ticker-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+.animate-ticker-pulse { animation: ticker-pulse 2s ease-in-out infinite; }

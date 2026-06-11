@@ -766,6 +766,33 @@ export type Database = {
           },
         ]
       }
+      validators: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          learner_id: string | null
+          relationship: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          learner_id?: string | null
+          relationship: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          learner_id?: string | null
+          relationship?: string
+          status?: string
+        }
+        Relationships: []
+      }
       wa_sessions: {
         Row: {
           assessment_answers: Json

@@ -1,8 +1,8 @@
-// Root page — immediately redirects based on auth state.
-// Authenticated users → /dashboard, guests → /login
+// Root page — public landing.
+// Guests see the marketing page; authenticated users get dashboard CTAs.
 
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { LandingPage } from "@/components/landing/landing-page";
 
 export default async function RootPage() {
   const supabase = await createClient();
@@ -10,10 +10,5 @@ export default async function RootPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect("/login");
-  }
-
-  // Let middleware + dashboard layout handle onboarding/assessment routing
-  redirect("/dashboard");
+  return <LandingPage isAuthenticated={!!user} />;
 }

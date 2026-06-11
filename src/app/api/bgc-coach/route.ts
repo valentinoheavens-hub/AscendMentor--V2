@@ -1,14 +1,14 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// BGC Coach API — streaming chat endpoint
+// BGC Coach API — streaming chat endpoint (Groq — fast inference)
 // GET  /api/bgc-coach?type=coaching|reflection|assessment_debrief
 //      → creates a new coaching session, returns { session_id }
 // POST /api/bgc-coach
 //      body: { messages, session_id?, session_type? }
-//      → streams Claude SSE text/event-stream
+//      → streams Groq SSE text/event-stream
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import Groq from "groq-sdk";
 import { createClient } from "@/lib/supabase/server";
 import { buildSystemPrompt } from "@/lib/bgc-coach/system-prompt";
 import type {
@@ -18,7 +18,7 @@ import type {
   SessionType,
 } from "@/types/platform";
 
-const anthropic = new Anthropic();
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ── GET — create session ──────────────────────────────────────────────────────
 
@@ -126,21 +126,22 @@ export async function POST(req: NextRequest) {
   (async () => {
     let fullContent = "";
     try {
-      const stream = anthropic.messages.stream({
-        model: "claude-sonnet-4-6",
+      const stream = await groq.chat.completions.create({
+        model: "llama-3.3-70b-versatile",
         max_tokens: 1024,
-        system: systemPrompt,
-        messages: messages.map((m) => ({ role: m.role, content: m.content })),
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages.map((m) => ({ role: m.role, content: m.content })),
+        ],
+        stream: true,
       });
 
       for await (const chunk of stream) {
-        if (
-          chunk.type === "content_block_delta" &&
-          chunk.delta.type === "text_delta"
-        ) {
-          fullContent += chunk.delta.text;
+        const text = chunk.choices[0]?.delta?.content ?? "";
+        if (text) {
+          fullContent += text;
           await writer.write(
-            encoder.encode(`data: ${JSON.stringify({ text: chunk.delta.text })}\n\n`)
+            encoder.encode(`data: ${JSON.stringify({ text })}\n\n`)
           );
         }
       }

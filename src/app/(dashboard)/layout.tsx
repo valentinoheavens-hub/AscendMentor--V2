@@ -18,7 +18,9 @@ import {
   Settings,
   LogOut,
   Trophy,
+  Sparkles,
 } from "lucide-react";
+import { MobileNav } from "@/components/layout/mobile-nav";
 
 export const metadata: Metadata = {
   title: "AscendMentor AI — Dashboard",
@@ -30,6 +32,7 @@ const NAV_ITEMS = [
   { href: "/coaching", label: "BGC Coach", icon: MessageSquare },
   { href: "/progress", label: "My Progress", icon: Star },
   { href: "/validate", label: "Peer Validation", icon: Trophy },
+  { href: "/upgrade", label: "Upgrade", icon: Sparkles },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
@@ -125,12 +128,15 @@ export default async function DashboardLayout({
       <div className="flex-1 lg:ml-60 flex flex-col min-h-screen">
         {/* Top bar (mobile + breadcrumb) */}
         <header className="sticky top-0 z-20 bg-background/80 backdrop-blur-md border-b border-border/40 px-4 lg:px-8 py-3 flex items-center justify-between">
-          {/* Mobile logo */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs font-display">A</span>
+          {/* Mobile header: hamburger + logo */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <MobileNav displayName={displayName} belt={belt} />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-xs font-display">A</span>
+              </div>
+              <span className="font-display font-semibold text-sm">AscendMentor</span>
             </div>
-            <span className="font-display font-semibold text-sm">AscendMentor</span>
           </div>
 
           {/* BGC tagline — visible desktop */}

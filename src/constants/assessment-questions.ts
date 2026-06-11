@@ -339,5 +339,5 @@ export const ASSESSMENT_QUESTIONS: AssessmentQuestion[] = [
   },
 ];
 
-export const TOTAL_QUESTIONS = ASSESSMENT_QUESTIONS.length; // 30
+export const TOTAL_QUESTIONS = ASSESSMENT_QUESTIONS.length; // 26 (6 SD + 5×4 other dims)
 export const MAX_TOTAL_SCORE = 104; // 24 + 20 + 20 + 20 + 20
