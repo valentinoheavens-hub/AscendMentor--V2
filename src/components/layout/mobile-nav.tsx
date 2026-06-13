@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, LayoutDashboard, BarChart3, MessageSquare, Star, Settings, LogOut, Trophy, Sparkles } from "lucide-react";
+import { Menu, LayoutDashboard, BarChart3, MessageSquare, Star, Settings, LogOut, Trophy, Sparkles, ClipboardCheck } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/assessment", label: "Clarity Assessment", icon: BarChart3 },
   { href: "/coaching", label: "BGC Coach", icon: MessageSquare },
+  { href: "/evidence", label: "Behavioural Evidence", icon: ClipboardCheck },
   { href: "/progress", label: "My Progress", icon: Star },
   { href: "/validate", label: "Peer Validation", icon: Trophy },
   { href: "/upgrade", label: "Upgrade", icon: Sparkles },

@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { getBeltForScore } from "@/constants/bgc-frameworks";
+import { recomputeMasteryScore } from "@/lib/mastery";
 import type { AssessmentAnswer, BeltTier, DimensionId } from "@/types/platform";
 
 // Max raw scores per dimension (from assessment-questions: 6×4=24, 5×4=20 each)
@@ -125,29 +126,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: insertErr.message }, { status: 500 });
   }
 
-  // ── CA score scaled to 30-point component in mastery formula ───────────────
-  const caScore = Math.round((overallPct / 100) * 30);
-
-  // ── Insert initial mastery_scores snapshot ─────────────────────────────────
-  await supabase.from("mastery_scores").insert({
-    user_id: user.id,
-    learner_id: learner.id,
-    total_score: caScore,
-    belt_tier: getBeltForScore(caScore).id as BeltTier,
-    ca_score: caScore,
-    be_score: 0,
-    lp_score: 0,
-    ai_score: 0,
-    ps_score: 0,
-    current_streak_weeks: 0,
-    snapshot_date: completedAt,
-  });
-
   // ── Mark assessment complete ────────────────────────────────────────────────
   await supabase
     .from("learners")
     .update({ assessment_complete: true })
     .eq("user_id", user.id);
+
+  // ── Recompute the Mastery Score from all signals (single source of truth).
+  // Belt tier is derived from the full 0–100 total inside recompute — never
+  // from the 30-point CA component alone.
+  const mastery = await recomputeMasteryScore(user.id);
 
   return NextResponse.json({
     success: true,
@@ -165,17 +153,6 @@ export async function POST(req: NextRequest) {
       assessment_round: assessmentRound,
       completed_at: completedAt,
     },
-    mastery_score: {
-      total_score: caScore,
-      belt_tier: getBeltForScore(caScore).id as BeltTier,
-      ca_score: caScore,
-      be_score: 0,
-      lp_score: 0,
-      ai_score: 0,
-      ps_score: 0,
-      current_streak_weeks: 0,
-      score_velocity: caScore,
-      snapshot_date: completedAt,
-    },
+    mastery_score: mastery,
   });
 }

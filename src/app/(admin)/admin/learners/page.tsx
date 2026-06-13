@@ -114,6 +114,7 @@ export default async function LearnersPage({
           <option value="">All Statuses</option>
           <option value="active">Active</option>
           <option value="pending">Pending</option>
+          <option value="declined">Declined</option>
           <option value="inactive">Inactive</option>
           <option value="trial">Trial</option>
         </select>
@@ -280,6 +281,7 @@ function StatusBadge({ status }: { status: string }) {
     active: "bg-green-500/15 text-green-400",
     inactive: "bg-white/10 text-white/40",
     pending: "bg-yellow-500/15 text-yellow-400",
+    declined: "bg-red-500/15 text-red-400",
     trial: "bg-blue-500/15 text-blue-400",
   };
   return (

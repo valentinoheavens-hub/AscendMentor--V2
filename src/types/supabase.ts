@@ -348,6 +348,7 @@ export type Database = {
           initial_challenge: string | null
           last_name: string | null
           onboarding_complete: boolean
+          organisation_id: string | null
           organisation_name: string | null
           organisation_size: string | null
           past_coaching: boolean
@@ -376,6 +377,7 @@ export type Database = {
           initial_challenge?: string | null
           last_name?: string | null
           onboarding_complete?: boolean
+          organisation_id?: string | null
           organisation_name?: string | null
           organisation_size?: string | null
           past_coaching?: boolean
@@ -404,6 +406,7 @@ export type Database = {
           initial_challenge?: string | null
           last_name?: string | null
           onboarding_complete?: boolean
+          organisation_id?: string | null
           organisation_name?: string | null
           organisation_size?: string | null
           past_coaching?: boolean
@@ -613,6 +616,81 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      enterprise_inquiries: {
+        Row: {
+          contact_email: string
+          contact_name: string
+          country: string | null
+          created_at: string
+          id: string
+          message: string | null
+          organisation_name: string
+          phone: string | null
+          status: string
+          team_size: string | null
+        }
+        Insert: {
+          contact_email: string
+          contact_name: string
+          country?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          organisation_name: string
+          phone?: string | null
+          status?: string
+          team_size?: string | null
+        }
+        Update: {
+          contact_email?: string
+          contact_name?: string
+          country?: string | null
+          created_at?: string
+          id?: string
+          message?: string | null
+          organisation_name?: string
+          phone?: string | null
+          status?: string
+          team_size?: string | null
+        }
+        Relationships: []
+      }
+      organisations: {
+        Row: {
+          contact_email: string | null
+          contact_name: string | null
+          created_at: string
+          id: string
+          invite_code: string
+          name: string
+          notes: string | null
+          seat_count: number
+          status: string
+        }
+        Insert: {
+          contact_email?: string | null
+          contact_name?: string | null
+          created_at?: string
+          id?: string
+          invite_code?: string
+          name: string
+          notes?: string | null
+          seat_count?: number
+          status?: string
+        }
+        Update: {
+          contact_email?: string | null
+          contact_name?: string | null
+          created_at?: string
+          id?: string
+          invite_code?: string
+          name?: string
+          notes?: string | null
+          seat_count?: number
+          status?: string
+        }
+        Relationships: []
       }
       path_modules: {
         Row: {

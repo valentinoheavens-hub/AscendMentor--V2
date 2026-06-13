@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { UserPlus, CheckCircle, Clock, XCircle, Mail } from "lucide-react";
+import { UserPlus, CheckCircle, Clock, XCircle, Mail, Copy, Check } from "lucide-react";
 
 interface Validator {
   id: string;
@@ -142,17 +142,20 @@ export function PeerValidationClient({ validators: initial, learnerId, userId }:
           </h2>
           <div className="space-y-3">
             {validators.map(v => (
-              <div key={v.id} className="flex items-center justify-between py-2 border-b border-border/20 last:border-0">
-                <div>
-                  <p className="text-sm font-medium text-foreground">{v.email}</p>
-                  <p className="text-xs text-muted-foreground capitalize">
-                    {RELATIONSHIPS.find(r => r.value === v.relationship)?.label ?? v.relationship}
-                  </p>
+              <div key={v.id} className="py-2 border-b border-border/20 last:border-0">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{v.email}</p>
+                    <p className="text-xs text-muted-foreground capitalize">
+                      {RELATIONSHIPS.find(r => r.value === v.relationship)?.label ?? v.relationship}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {STATUS_ICONS[v.status] ?? STATUS_ICONS.pending}
+                    <span className="text-xs text-muted-foreground capitalize">{v.status}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  {STATUS_ICONS[v.status] ?? STATUS_ICONS.pending}
-                  <span className="text-xs text-muted-foreground capitalize">{v.status}</span>
-                </div>
+                {v.status !== "completed" && <ShareLink validatorId={v.id} />}
               </div>
             ))}
           </div>
@@ -167,5 +170,38 @@ export function PeerValidationClient({ validators: initial, learnerId, userId }:
         </div>
       )}
     </div>
+  );
+}
+
+function ShareLink({ validatorId }: { validatorId: string }) {
+  const [copied, setCopied] = useState(false);
+  const link =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/peer/${validatorId}`
+      : `/peer/${validatorId}`;
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="mt-2 w-full flex items-center gap-2 px-3 py-1.5 rounded-lg bg-background border border-border/50 text-[11px] text-muted-foreground hover:border-primary/40 transition-colors"
+      title="Copy the validation link to send to this person"
+    >
+      {copied ? <Check className="h-3 w-3 text-green-400 flex-shrink-0" /> : <Copy className="h-3 w-3 flex-shrink-0" />}
+      <span className="truncate font-mono">{link}</span>
+      <span className="ml-auto flex-shrink-0 font-sans font-medium text-foreground">
+        {copied ? "Copied" : "Copy"}
+      </span>
+    </button>
   );
 }

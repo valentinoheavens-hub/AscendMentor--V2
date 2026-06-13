@@ -30,6 +30,7 @@ export default async function AdminDashboardPage() {
     { data: beltDistribution },
     { count: assessmentCount },
     { count: sessionCount },
+    { count: pendingApplications },
   ] = await Promise.all([
     adminClient.from("learners").select("*", { count: "exact", head: true }),
     adminClient
@@ -50,6 +51,11 @@ export default async function AdminDashboardPage() {
     adminClient
       .from("coaching_sessions")
       .select("*", { count: "exact", head: true }),
+    adminClient
+      .from("learners")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "pending")
+      .eq("onboarding_complete", true),
   ]);
 
   // Aggregate stats
@@ -91,6 +97,14 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
         <StatCard label="Assessments" value={assessmentCount ?? 0} accent />
         <StatCard label="Coaching Sessions" value={sessionCount ?? 0} accent />
+        <a href="/admin/applications" className="block">
+          <StatCard
+            label="Pending Applications"
+            value={pendingApplications ?? 0}
+            accent
+            sub={pendingApplications ? "Awaiting your review →" : "Queue clear ✓"}
+          />
+        </a>
       </div>
 
       {/* Belt distribution */}

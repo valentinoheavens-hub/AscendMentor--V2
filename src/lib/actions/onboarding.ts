@@ -10,6 +10,8 @@ import {
   step4Schema,
   step5Schema,
 } from "@/lib/validations/onboarding";
+import { redeemInviteCode } from "@/lib/organisations";
+import { sendAdminNewApplicationEmail } from "@/lib/email";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Helper — ensure learner record exists for current user
@@ -169,6 +171,8 @@ export async function completeOnboarding(
   const parsed = step5Schema.safeParse(data);
   if (!parsed.success) return { error: parsed.error.issues[0].message };
 
+  let activated = false;
+
   try {
     const supabase = await createClient();
     const { user } = await getOrCreateLearner(supabase);
@@ -184,12 +188,40 @@ export async function completeOnboarding(
       .eq("user_id", user.id);
 
     if (error) return { error: error.message };
+
+    // Institution invite? The org vouches for the member — activate immediately.
+    const inviteCode = user.user_metadata?.invite_code as string | undefined;
+    if (inviteCode) {
+      const result = await redeemInviteCode(user.id, inviteCode);
+      activated = result.ok;
+    }
+
+    if (!activated) {
+      // Individual applicant — check status, notify admin for review
+      const { data: learner } = await supabase
+        .from("learners")
+        .select("full_name, email, organisation_name, role_title, country, status")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (learner?.status === "active" || learner?.status === "trial") {
+        activated = true;
+      } else if (learner) {
+        await sendAdminNewApplicationEmail({
+          fullName: learner.full_name,
+          email: learner.email,
+          organisation: learner.organisation_name,
+          roleTitle: learner.role_title,
+          country: learner.country,
+        });
+      }
+    }
   } catch (e) {
     return { error: e instanceof Error ? e.message : "Unknown error" };
   }
 
-  // Redirect to assessment after successful onboarding
-  redirect("/assessment");
+  // Approved (org member / pre-activated) → assessment; otherwise → review holding page
+  redirect(activated ? "/assessment" : "/pending-approval");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

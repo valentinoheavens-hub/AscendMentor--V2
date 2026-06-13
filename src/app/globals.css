@@ -178,6 +178,24 @@
 .belt-yellow { background: rgba(217,119,6,0.12);  color: #FCD34D; border-color: rgba(217,119,6,0.35); }
 .belt-seeker { background: rgba(107,114,128,0.12);color: #9CA3AF; border-color: rgba(107,114,128,0.35); }
 
+/* Belt badge — base pill + per-tier variants (ids match MASTERY_BELTS) */
+.belt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.belt-badge-black_belt  { background: rgba(184,150,12,0.12); color: #F5C518; border-color: rgba(184,150,12,0.35); }
+.belt-badge-blue_belt   { background: rgba(29,78,216,0.12);  color: #60A5FA; border-color: rgba(29,78,216,0.35); }
+.belt-badge-green_belt  { background: rgba(5,150,105,0.12);  color: #34D399; border-color: rgba(5,150,105,0.35); }
+.belt-badge-yellow_belt { background: rgba(217,119,6,0.12);  color: #FCD34D; border-color: rgba(217,119,6,0.35); }
+.belt-badge-seeker      { background: rgba(107,114,128,0.12);color: #9CA3AF; border-color: rgba(107,114,128,0.35); }
+
 /* Chat bubbles */
 .chat-user {
   background-color: #2A2A2A;

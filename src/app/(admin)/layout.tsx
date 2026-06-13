@@ -35,7 +35,10 @@ export default async function AdminLayout({
           <NavLink href="/admin" exact>
             Overview
           </NavLink>
+          <NavLink href="/admin/applications">Applications</NavLink>
           <NavLink href="/admin/learners">Learners</NavLink>
+          <NavLink href="/admin/organisations">Organisations</NavLink>
+          <NavLink href="/admin/inquiries">Inquiries</NavLink>
           <NavLink href="/admin/sessions">Sessions</NavLink>
         </nav>
 

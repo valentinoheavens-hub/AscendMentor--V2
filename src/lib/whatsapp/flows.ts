@@ -9,10 +9,10 @@
 //   completed    → main menu with score/belt overview
 // ─────────────────────────────────────────────────────────────────────────────
 
-import Anthropic from "@anthropic-ai/sdk";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { sendText, sendInteractive, markRead } from "./client";
 import { buildSystemPrompt } from "@/lib/bgc-coach/system-prompt";
+import { generateCoach } from "@/lib/bgc-coach/provider";
 import { getBeltForScore } from "@/constants/bgc-frameworks";
 import { getPromptForWeek } from "@/constants/reflection-prompts";
 import type {
@@ -26,7 +26,6 @@ import type {
 } from "@/types/platform";
 import type { WAIncomingMessage, WAContact } from "./types";
 
-const anthropic = new Anthropic();
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://ascendmentor.ai";
 
 // Cast typed arrays to the `unknown` Supabase expects for JSONB columns
@@ -246,19 +245,12 @@ async function flowCoaching(
 
   let reply = "";
   try {
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 500,
-      system: systemPrompt,
-      messages: capped.map((m) => ({
-        role: m.role as "user" | "assistant",
-        content: m.content,
-      })),
-    });
     reply =
-      response.content[0].type === "text"
-        ? response.content[0].text
-        : "Could not generate a response. Please try again.";
+      (await generateCoach(
+        systemPrompt,
+        capped.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
+        500
+      )) || "Could not generate a response. Please try again.";
   } catch {
     reply = "There was an issue connecting to the BGC Coach. Please try again.";
   }
@@ -320,16 +312,12 @@ async function flowReflection(
 
   let reply = "";
   try {
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 500,
-      system: systemPrompt + "\n\n" + instruction,
-      messages: [{ role: "user", content: text }],
-    });
     reply =
-      response.content[0].type === "text"
-        ? response.content[0].text
-        : "Could not process your reflection. Please try again.";
+      (await generateCoach(
+        systemPrompt + "\n\n" + instruction,
+        [{ role: "user", content: text }],
+        500
+      )) || "Could not process your reflection. Please try again.";
   } catch {
     reply = "There was an issue. Please try again.";
   }

@@ -66,7 +66,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-dvh bg-[#1A1A1A] text-[#F9F6F0] antialiased">
+      <body
+        className="min-h-dvh bg-[#1A1A1A] text-[#F9F6F0] antialiased"
+        suppressHydrationWarning
+      >
         {children}
         <Toaster
           position="top-right"

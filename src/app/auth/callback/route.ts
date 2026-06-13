@@ -10,6 +10,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "@/types/supabase";
+import { redeemInviteCode } from "@/lib/organisations";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -83,6 +84,12 @@ export async function GET(request: NextRequest) {
 
     if (insertError) {
       console.error("[auth/callback] Learner insert error:", insertError.message);
+    }
+
+    // Institution invite — the org vouches for the member, activate immediately
+    const inviteCode = userMeta?.invite_code as string | undefined;
+    if (inviteCode && !insertError) {
+      await redeemInviteCode(session.user.id, inviteCode);
     }
 
     return NextResponse.redirect(`${origin}/onboarding`);

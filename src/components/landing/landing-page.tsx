@@ -167,6 +167,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
             <a href="#how-it-works" className="hover:text-foreground transition-colors">How it works</a>
             <a href="#mastery-score" className="hover:text-foreground transition-colors">Mastery Score™</a>
             <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
+            <Link href="/institutions" className="hover:text-foreground transition-colors">For institutions</Link>
           </div>
 
           <div className="flex items-center gap-3">
@@ -653,6 +654,24 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
         <p className="text-center text-xs text-muted-foreground mt-8">
           🛡️ 30-day money-back guarantee · ✋ Cancel any time · 🌍 Paystack · Flutterwave · M-Pesa
         </p>
+
+        {/* Enterprise strip */}
+        <div className="mt-10 bg-gradient-to-r from-primary/15 via-primary/5 to-transparent border border-primary/30 rounded-2xl px-7 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-display font-semibold text-lg">Leading an institution?</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Seat-based licences for banks, agencies, universities and corporates — with
+              team clarity analytics and invoice billing.
+            </p>
+          </div>
+          <Link
+            href="/institutions"
+            className="btn-gold inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm whitespace-nowrap transition-colors"
+          >
+            For institutions
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </section>
 
       {/* ── Final CTA ── */}
@@ -696,6 +715,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
             <div className="flex items-center gap-6 text-xs text-muted-foreground">
               <a href="#dimensions" className="hover:text-foreground transition-colors">Framework</a>
               <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
+              <Link href="/institutions" className="hover:text-foreground transition-colors">For institutions</Link>
               <Link href="/login" className="hover:text-foreground transition-colors">Sign in</Link>
               <a href="mailto:support@ascendmentor.ai" className="hover:text-foreground transition-colors">
                 support@ascendmentor.ai

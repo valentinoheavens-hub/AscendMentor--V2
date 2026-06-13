@@ -1,24 +1,25 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// BGC Coach API — streaming chat endpoint (Groq — fast inference)
+// BGC Coach API — streaming chat endpoint.
+// Runs on the unified coach provider (see lib/bgc-coach/provider.ts) so the
+// brain and voice match the WhatsApp channel exactly.
 // GET  /api/bgc-coach?type=coaching|reflection|assessment_debrief
 //      → creates a new coaching session, returns { session_id }
 // POST /api/bgc-coach
 //      body: { messages, session_id?, session_type? }
-//      → streams Groq SSE text/event-stream
+//      → streams SSE text/event-stream of { text } chunks, then [DONE]
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from "next/server";
-import Groq from "groq-sdk";
 import { createClient } from "@/lib/supabase/server";
 import { buildSystemPrompt } from "@/lib/bgc-coach/system-prompt";
+import { streamCoach } from "@/lib/bgc-coach/provider";
+import { recomputeMasteryScore } from "@/lib/mastery";
 import type {
   LearnerProfile,
   ClarityProfile,
   MasteryScoreBreakdown,
   SessionType,
 } from "@/types/platform";
-
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ── GET — create session ──────────────────────────────────────────────────────
 
@@ -86,7 +87,7 @@ export async function POST(req: NextRequest) {
     supabase
       .from("learners")
       .select(
-        "full_name, organisation_name, role_title, organisation_size, years_running, country, initial_challenge, success_criteria, past_coaching, past_coaching_outcome, created_at"
+        "full_name, organisation_name, role_title, organisation_size, years_running, country, initial_challenge, success_criteria, past_coaching, past_coaching_outcome, created_at, status"
       )
       .eq("user_id", user.id)
       .single(),
@@ -110,6 +111,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Learner not found" }, { status: 404 });
   }
 
+  // Access gate — only approved accounts may use the coach
+  const learnerStatus = (learnerRes.data as { status?: string | null }).status;
+  if (learnerStatus !== "active" && learnerStatus !== "trial") {
+    return NextResponse.json({ error: "Account pending approval" }, { status: 403 });
+  }
+
   const systemPrompt = buildSystemPrompt({
     learner: learnerRes.data as unknown as LearnerProfile,
     clarityProfile: assessmentRes.data as ClarityProfile | null,
@@ -126,18 +133,7 @@ export async function POST(req: NextRequest) {
   (async () => {
     let fullContent = "";
     try {
-      const stream = await groq.chat.completions.create({
-        model: "llama-3.3-70b-versatile",
-        max_tokens: 1024,
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...messages.map((m) => ({ role: m.role, content: m.content })),
-        ],
-        stream: true,
-      });
-
-      for await (const chunk of stream) {
-        const text = chunk.choices[0]?.delta?.content ?? "";
+      for await (const text of streamCoach(systemPrompt, messages)) {
         if (text) {
           fullContent += text;
           await writer.write(
@@ -171,6 +167,9 @@ export async function POST(req: NextRequest) {
               ended_at: new Date().toISOString(),
             })
             .eq("id", session_id);
+
+          // Coaching engagement feeds the AI-quality component of the score.
+          await recomputeMasteryScore(user.id);
         }
       }
 

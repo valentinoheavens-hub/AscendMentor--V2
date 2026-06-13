@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { toast } from "sonner";
-import { Eye, EyeOff, Loader2, CheckCircle2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, CheckCircle2, Building2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { signupSchema, type SignupInput } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,17 @@ import {
 } from "@/components/ui/card";
 
 export default function SignupPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignupForm />
+    </Suspense>
+  );
+}
+
+function SignupForm() {
+  const searchParams = useSearchParams();
+  const inviteCode = searchParams.get("invite");
+
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -41,6 +53,9 @@ export default function SignupPage() {
       password: data.password,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
+        // Institutional invite — carried in user metadata, redeemed at
+        // first login (auth callback) and again at onboarding completion.
+        ...(inviteCode ? { data: { invite_code: inviteCode } } : {}),
       },
     });
 
@@ -88,6 +103,15 @@ export default function SignupPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {inviteCode && (
+          <div className="mb-4 flex items-start gap-2.5 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2.5">
+            <Building2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              <span className="text-foreground font-medium">Institutional invite detected.</span>{" "}
+              Your access will be activated automatically once you confirm your email.
+            </p>
+          </div>
+        )}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email address</Label>

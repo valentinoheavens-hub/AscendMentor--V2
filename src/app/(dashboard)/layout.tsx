@@ -19,6 +19,7 @@ import {
   LogOut,
   Trophy,
   Sparkles,
+  ClipboardCheck,
 } from "lucide-react";
 import { MobileNav } from "@/components/layout/mobile-nav";
 
@@ -30,6 +31,7 @@ const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/assessment", label: "Clarity Assessment", icon: BarChart3 },
   { href: "/coaching", label: "BGC Coach", icon: MessageSquare },
+  { href: "/evidence", label: "Behavioural Evidence", icon: ClipboardCheck },
   { href: "/progress", label: "My Progress", icon: Star },
   { href: "/validate", label: "Peer Validation", icon: Trophy },
   { href: "/upgrade", label: "Upgrade", icon: Sparkles },
@@ -51,11 +53,17 @@ export default async function DashboardLayout({
   // Load learner state for routing decisions
   const { data: learner } = await supabase
     .from("learners")
-    .select("full_name, first_name, onboarding_complete, assessment_complete")
+    .select("full_name, first_name, onboarding_complete, assessment_complete, status")
     .eq("user_id", user.id)
     .maybeSingle();
 
   if (!learner?.onboarding_complete) redirect("/onboarding");
+
+  // Access gate — applications are reviewed before the platform opens up.
+  // 'active' and 'trial' get in; pending/declined/inactive see the holding page.
+  if (learner.status !== "active" && learner.status !== "trial") {
+    redirect("/pending-approval");
+  }
 
   // Belt comes from latest mastery snapshot
   const { data: mastery } = await supabase
