@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Jost, Inter } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -58,27 +59,29 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jost.variable} ${inter.variable} dark`}
+      className={`${jost.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
         {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Set the theme before paint to avoid a flash. Stored choice wins;
+            otherwise default to the brand's dark theme. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var t=localStorage.getItem('theme');var dark=t?t==='dark':true;var e=document.documentElement;e.classList.toggle('dark',dark);e.style.colorScheme=dark?'dark':'light';}catch(e){}})();`}
+        </Script>
       </head>
       <body
-        className="min-h-dvh bg-[#1A1A1A] text-[#F9F6F0] antialiased"
+        className="min-h-dvh bg-background text-foreground antialiased"
         suppressHydrationWarning
       >
         {children}
         <Toaster
           position="top-right"
-          theme="dark"
+          theme="system"
           toastOptions={{
             style: {
-              background: "#222222",
-              border: "1px solid rgba(255,255,255,0.08)",
-              color: "#F9F6F0",
               fontFamily: "var(--font-jost)",
             },
           }}

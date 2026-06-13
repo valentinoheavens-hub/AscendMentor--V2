@@ -22,6 +22,7 @@ import {
   ClipboardCheck,
 } from "lucide-react";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
   title: "AscendMentor AI — Dashboard",
@@ -153,6 +154,7 @@ export default async function DashboardLayout({
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <span className={cn("belt-badge text-[10px]", `belt-badge-${belt}`)}>
               {belt.replace("_", " ").toUpperCase()}
             </span>

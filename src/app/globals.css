@@ -48,30 +48,30 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ── BGC Brand — Default (Dark) ─────────────────────────────────────────── */
+/* ── BGC Brand — Light (default) ────────────────────────────────────────── */
 :root {
-  /* Shadcn token overrides — BGC dark palette */
-  --background:             #1A1A1A;
-  --foreground:             #F9F6F0;
-  --card:                   #222222;
-  --card-foreground:        #F9F6F0;
-  --popover:                #222222;
-  --popover-foreground:     #F9F6F0;
+  /* Shadcn token overrides — BGC light palette (warm off-white + gold) */
+  --background:             #F9F6F0;
+  --foreground:             #1A1A1A;
+  --card:                   #FFFFFF;
+  --card-foreground:        #1A1A1A;
+  --popover:                #FFFFFF;
+  --popover-foreground:     #1A1A1A;
   --primary:                #B8960C;
-  --primary-foreground:     #1A1A1A;
-  --secondary:              #2A2A2A;
-  --secondary-foreground:   #F9F6F0;
-  --muted:                  #2A2A2A;
-  --muted-foreground:       #888780;
-  --accent:                 #333333;
-  --accent-foreground:      #F9F6F0;
+  --primary-foreground:     #FFFFFF;
+  --secondary:              #EFEAE0;
+  --secondary-foreground:   #1A1A1A;
+  --muted:                  #EFEAE0;
+  --muted-foreground:       #6B6960;
+  --accent:                 #E8E2D6;
+  --accent-foreground:      #1A1A1A;
   --destructive:            #DC2626;
-  --border:                 rgba(255,255,255,0.08);
-  --input:                  rgba(255,255,255,0.06);
+  --border:                 rgba(0,0,0,0.10);
+  --input:                  rgba(0,0,0,0.10);
   --ring:                   #B8960C;
   --radius:                 0.5rem;
 
-  /* Chart — dimension colours */
+  /* Chart — dimension colours (shared across themes) */
   --chart-1: #B8960C;
   --chart-2: #2563EB;
   --chart-3: #059669;
@@ -79,31 +79,33 @@
   --chart-5: #DC2626;
 
   /* Sidebar */
-  --sidebar:                #1A1A1A;
-  --sidebar-foreground:     #F9F6F0;
+  --sidebar:                #FFFFFF;
+  --sidebar-foreground:     #1A1A1A;
   --sidebar-primary:        #B8960C;
-  --sidebar-primary-foreground: #1A1A1A;
-  --sidebar-accent:         #2A2A2A;
-  --sidebar-accent-foreground: #F9F6F0;
-  --sidebar-border:         rgba(255,255,255,0.06);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent:         #EFEAE0;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border:         rgba(0,0,0,0.08);
   --sidebar-ring:           #B8960C;
 
-  /* BGC brand tokens */
+  /* BGC brand tokens (shared) */
   --brand-black:      #1A1A1A;
   --brand-gold:       #B8960C;
   --brand-gold-light: #F5C518;
   --brand-maroon:     #7B1C2A;
   --brand-off-white:  #F9F6F0;
 
-  /* Dimension colours */
+  /* Dimension colours (shared) */
   --dim-direction:  #2563EB;
   --dim-people:     #059669;
   --dim-systems:    #7C3AED;
   --dim-structure:  #DC2626;
   --dim-leadership: #B8960C;
+
+  color-scheme: light;
 }
 
-/* Dark variant — same as root (platform is dark-first) */
+/* ── BGC Brand — Dark ───────────────────────────────────────────────────── */
 .dark {
   --background:           #1A1A1A;
   --foreground:           #F9F6F0;
@@ -136,6 +138,8 @@
   --sidebar-accent-foreground: #F9F6F0;
   --sidebar-border:       rgba(255,255,255,0.06);
   --sidebar-ring:         #B8960C;
+
+  color-scheme: dark;
 }
 
 @layer base {
@@ -150,7 +154,6 @@
   }
   html {
     @apply font-sans;
-    color-scheme: dark;
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {

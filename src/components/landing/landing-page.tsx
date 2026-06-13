@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Landing Page — AscendMentor AI by BGC
-// Dark, gold-accented marketing page. Pure server component — zero client JS.
+// Gold-accented marketing page. Themeable (light/dark) via design tokens.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import Link from "next/link";
@@ -17,6 +17,7 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface LandingPageProps {
   isAuthenticated: boolean;
@@ -56,7 +57,7 @@ const DIMENSIONS = [
     desc: "Personal leadership clarity, self-mastery, executive presence, and impact capacity.",
     icon: Crown,
     color: "#B8960C",
-    bg: "bg-yellow-500/10",
+    bg: "bg-primary/10",
   },
 ];
 
@@ -171,6 +172,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             {!isAuthenticated && (
               <Link
                 href="/login"
@@ -198,8 +200,8 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             {/* Copy */}
             <div className="landing-stagger">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-xs font-medium text-yellow-400 mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ticker-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-xs font-medium text-primary mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ticker-pulse" />
                 Built on BGC&apos;s 5 proprietary leadership frameworks
               </div>
 
@@ -296,7 +298,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
               <div className="absolute -bottom-5 -left-6 bg-card border border-border/50 rounded-2xl px-4 py-3 shadow-xl shadow-black/40 max-w-[240px]">
                 <div className="flex items-start gap-2.5">
                   <div className="w-7 h-7 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0">
-                    <MessageSquare className="h-3.5 w-3.5 text-yellow-400" />
+                    <MessageSquare className="h-3.5 w-3.5 text-primary" />
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-snug">
                     <span className="text-foreground font-medium">BGC Coach:</span>{" "}
@@ -329,7 +331,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       {/* ── Five dimensions ── */}
       <section id="dimensions" className="max-w-6xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">The Framework</p>
+          <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">The Framework</p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
             Five dimensions. One complete picture of your leadership.
           </h2>
@@ -360,7 +362,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
           <div className="landing-card bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30 rounded-2xl p-6 flex flex-col justify-between">
             <div>
               <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center mb-5">
-                <Sparkles className="h-5 w-5 text-yellow-400" />
+                <Sparkles className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-display font-semibold text-lg">Where do you stand?</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
@@ -369,7 +371,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
             </div>
             <Link
               href={primaryHref}
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-yellow-400 hover:text-yellow-300 transition-colors"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
             >
               Take the assessment <ArrowRight className="h-4 w-4" />
             </Link>
@@ -381,7 +383,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       <section id="how-it-works" className="border-y border-border/40 bg-card/30">
         <div className="max-w-6xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">How it works</p>
+            <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">How it works</p>
             <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
               Assess. Coach. Prove it.
             </h2>
@@ -400,7 +402,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                     {s.n}
                   </span>
                   <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center mb-5">
-                    <Icon className="h-5 w-5 text-yellow-400" />
+                    <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-display font-semibold text-lg pr-10">{s.title}</h3>
                   <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
@@ -415,7 +417,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       <section id="mastery-score" className="max-w-6xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">
+            <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">
               BGC Mastery Score™
             </p>
             <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
@@ -434,7 +436,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                 "Belt promotions are earned, never given",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-foreground">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0 mt-0.5" />
                   {t}
                 </li>
               ))}
@@ -477,7 +479,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       <section className="border-y border-border/40 bg-card/30">
         <div className="max-w-6xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">The Belt Journey</p>
+            <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">The Belt Journey</p>
             <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
               From Clarity Seeker to Black Belt.
             </h2>
@@ -542,7 +544,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                   where deadlines die…
                 </div>
                 <div className="flex items-center gap-2 text-[11px] text-muted-foreground pl-1">
-                  <span className="w-1 h-1 rounded-full bg-yellow-400 animate-ticker-pulse" />
+                  <span className="w-1 h-1 rounded-full bg-primary animate-ticker-pulse" />
                   Cites: People · Systems · Structure — Systems pillar
                 </div>
               </div>
@@ -550,7 +552,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
           </div>
 
           <div className="order-1 lg:order-2">
-            <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">
+            <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">
               BGC AI Coach
             </p>
             <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
@@ -568,7 +570,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                 "Assessment debriefs that turn scores into 90-day plans",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0 mt-0.5" />
                   {t}
                 </li>
               ))}
@@ -599,7 +601,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       {/* ── Pricing ── */}
       <section id="pricing" className="max-w-6xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-xs font-semibold text-yellow-400 tracking-[0.25em] uppercase mb-4">Pricing</p>
+          <p className="text-xs font-semibold text-primary tracking-[0.25em] uppercase mb-4">Pricing</p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight">
             Start free. Upgrade when you&apos;re ready to climb.
           </h2>
@@ -632,7 +634,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
               <ul className="mt-6 space-y-3 flex-1">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}

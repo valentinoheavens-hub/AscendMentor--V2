@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Save, LogOut, Sparkles } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface Props {
   email: string;
@@ -89,6 +90,20 @@ export function SettingsClient({
               Upgrade
             </Link>
           )}
+        </div>
+      </div>
+
+      {/* Appearance */}
+      <div className="bg-card border border-border/40 rounded-2xl p-5">
+        <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+          Appearance
+        </h2>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-foreground">Theme</p>
+            <p className="text-xs text-muted-foreground">Switch between light and dark mode</p>
+          </div>
+          <ThemeToggle className="border border-border/60" />
         </div>
       </div>
 
