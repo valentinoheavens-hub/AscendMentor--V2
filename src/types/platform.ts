@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// AscendMentor AI — Platform TypeScript Types
+// ClarityOS — Platform TypeScript Types
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type BeltTier =

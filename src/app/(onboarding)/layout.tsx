@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { Logo } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
-  title: "AscendMentor AI — Getting Started",
+  title: "ClarityOS — Getting Started",
   description: "Set up your leadership mastery profile.",
 };
 
@@ -24,14 +25,7 @@ export default async function OnboardingLayout({
     <div className="min-h-screen bg-background flex flex-col">
       {/* Minimal header */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-border/40">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-          </div>
-          <span className="font-display font-semibold text-foreground text-sm">
-            AscendMentor AI
-          </span>
-        </div>
+        <Logo markClassName="h-8 w-8" wordmarkClassName="text-sm" />
         <span className="text-xs text-muted-foreground hidden sm:block">
           Powered by BGC Blackbelt OS™
         </span>

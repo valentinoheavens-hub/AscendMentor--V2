@@ -8,9 +8,10 @@ import Link from "next/link";
 import { XCircle, CheckCircle2 } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { PeerResponseForm } from "@/components/validation/peer-response-form";
+import { Logo } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
-  title: "Peer Validation — AscendMentor AI",
+  title: "Peer Validation — ClarityOS",
 };
 
 export default async function PeerValidationPortal({
@@ -39,14 +40,8 @@ export default async function PeerValidationPortal({
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-5 py-12">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-          <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-        </div>
-        <div>
-          <p className="font-display font-bold text-sm leading-none">AscendMentor</p>
-          <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">AI by BGC</p>
-        </div>
+      <div className="mb-8">
+        <Logo markClassName="h-9 w-9" wordmarkClassName="text-base" />
       </div>
 
       <div className="w-full max-w-lg">
@@ -74,7 +69,7 @@ export default async function PeerValidationPortal({
                 How does {learnerName} lead?
               </h1>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {learnerName} is on a leadership mastery journey with AscendMentor AI and
+                {learnerName} is on a leadership mastery journey with ClarityOS and
                 has asked for your honest perspective. It takes two minutes and stays
                 confidential — they see the aggregate, not who said what.
               </p>
@@ -106,7 +101,7 @@ function StateCard({
       <h1 className="font-display text-xl font-bold text-foreground">{title}</h1>
       <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</p>
       <Link href="/" className="mt-6 inline-block text-sm text-yellow-400 hover:text-yellow-300 transition-colors">
-        ← AscendMentor AI
+        ← ClarityOS
       </Link>
     </div>
   );

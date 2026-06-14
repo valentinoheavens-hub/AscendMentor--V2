@@ -8,7 +8,7 @@ import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createOrganisation } from "@/lib/actions/admin";
 
-export const metadata = { title: "Organisations — AscendMentor Admin" };
+export const metadata = { title: "Organisations — ClarityOS Admin" };
 export const dynamic = "force-dynamic";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -56,18 +56,18 @@ export default async function OrganisationsPage() {
             name="name"
             required
             placeholder="Organisation name *"
-            className="lg:col-span-2 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#c9a84c]/50"
+            className="lg:col-span-2 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#1B6FF3]/50"
           />
           <input
             name="contact_name"
             placeholder="Contact person"
-            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#c9a84c]/50"
+            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#1B6FF3]/50"
           />
           <input
             name="contact_email"
             type="email"
             placeholder="Contact email"
-            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#c9a84c]/50"
+            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#1B6FF3]/50"
           />
           <div className="flex gap-3">
             <input
@@ -76,11 +76,11 @@ export default async function OrganisationsPage() {
               min={1}
               defaultValue={10}
               title="Seats"
-              className="w-20 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#c9a84c]/50"
+              className="w-20 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#1B6FF3]/50"
             />
             <button
               type="submit"
-              className="flex-1 bg-[#c9a84c] hover:bg-[#d4b563] text-black font-semibold text-sm px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+              className="flex-1 bg-[#1B6FF3] hover:bg-[#2E90FA] text-black font-semibold text-sm px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
             >
               Create
             </button>
@@ -103,7 +103,7 @@ export default async function OrganisationsPage() {
               <Link
                 key={org.id}
                 href={`/admin/organisations/${org.id}`}
-                className="block rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#c9a84c]/40 p-5 transition-colors"
+                className="block rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#1B6FF3]/40 p-5 transition-colors"
               >
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="min-w-0">
@@ -135,7 +135,7 @@ export default async function OrganisationsPage() {
                     <div className="w-28">
                       <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
                         <div
-                          className={`h-full rounded-full ${pctUsed >= 100 ? "bg-red-400" : "bg-[#c9a84c]"}`}
+                          className={`h-full rounded-full ${pctUsed >= 100 ? "bg-red-400" : "bg-[#1B6FF3]"}`}
                           style={{ width: `${pctUsed}%` }}
                         />
                       </div>

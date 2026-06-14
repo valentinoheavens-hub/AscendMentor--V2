@@ -1,9 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Landing Page — AscendMentor AI by BGC
-// Gold-accented marketing page. Themeable (light/dark) via design tokens.
+// Landing Page — ClarityOS by BGC
+// ClarityOS blue-accented marketing page. Themeable (light/dark) via tokens.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import Link from "next/link";
+import { Logo, LogoMark } from "@/components/brand/logo";
 import {
   ArrowRight,
   BarChart3,
@@ -56,8 +57,8 @@ const DIMENSIONS = [
     name: "Leadership Mastery",
     desc: "Personal leadership clarity, self-mastery, executive presence, and impact capacity.",
     icon: Crown,
-    color: "#B8960C",
-    bg: "bg-primary/10",
+    color: "#F59E0B",
+    bg: "bg-amber-500/10",
   },
 ];
 
@@ -66,7 +67,7 @@ const SCORE_COMPONENTS = [
   { label: "Behavioural Evidence", pts: 25, color: "#059669" },
   { label: "Learning Progress", pts: 15, color: "#7C3AED" },
   { label: "AI Session Quality", pts: 10, color: "#DC2626" },
-  { label: "Peer Validation", pts: 10, color: "#B8960C" },
+  { label: "Peer Validation", pts: 10, color: "#16C0F0" },
 ];
 
 const BELTS = [
@@ -153,14 +154,8 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       {/* ── Nav ── */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
         <nav className="max-w-6xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-            </div>
-            <div>
-              <p className="font-display font-bold text-sm leading-none">AscendMentor</p>
-              <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">AI by BGC</p>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Logo markClassName="h-8 w-8" wordmarkClassName="text-base" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -258,8 +253,8 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                       />
                       <defs>
                         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#F5C518" />
-                          <stop offset="100%" stopColor="#B8960C" />
+                          <stop offset="0%" stopColor="#1B6FF3" />
+                          <stop offset="100%" stopColor="#16C0F0" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -315,13 +310,13 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
       <section className="border-y border-border/40 bg-card/40">
         <div className="max-w-6xl mx-auto px-5 lg:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: "5", label: "Proprietary BGC frameworks" },
-            { value: "26", label: "Assessment questions, 5 dimensions" },
-            { value: "24/7", label: "AI coaching availability" },
-            { value: "90", label: "Days per mastery cycle" },
+            { value: "5", label: "Proprietary BGC frameworks", color: "#1B6FF3" },
+            { value: "26", label: "Assessment questions, 5 dimensions", color: "#7C3AED" },
+            { value: "24/7", label: "AI coaching availability", color: "#059669" },
+            { value: "90", label: "Days per mastery cycle", color: "#F59E0B" },
           ].map((s) => (
             <div key={s.label}>
-              <p className="font-display text-3xl lg:text-4xl font-bold text-gold-gradient">{s.value}</p>
+              <p className="font-display text-3xl lg:text-4xl font-bold" style={{ color: s.color }}>{s.value}</p>
               <p className="text-xs text-muted-foreground mt-2 leading-snug">{s.label}</p>
             </div>
           ))}
@@ -388,7 +383,7 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
               Assess. Coach. Prove it.
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Insight without evidence is just opinion. AscendMentor closes the loop —
+              Insight without evidence is just opinion. ClarityOS closes the loop —
               every 90 days, your mastery is measured, coached, and validated.
             </p>
           </div>
@@ -706,11 +701,12 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
         <div className="max-w-6xl mx-auto px-5 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-              </div>
+              <LogoMark className="h-8 w-8" />
               <div>
-                <p className="font-display font-bold text-sm leading-none">AscendMentor AI</p>
+                <p className="font-display font-bold text-sm leading-none">
+                  <span className="text-foreground">Clarity</span>
+                  <span className="text-brand-gradient">OS</span>
+                </p>
                 <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">
                   Blackbelt Global Consulting
                 </p>
@@ -722,8 +718,8 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
               <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
               <Link href="/institutions" className="hover:text-foreground transition-colors">For institutions</Link>
               <Link href="/login" className="hover:text-foreground transition-colors">Sign in</Link>
-              <a href="mailto:support@ascendmentor.ai" className="hover:text-foreground transition-colors">
-                support@ascendmentor.ai
+              <a href="mailto:support@clarityos.ai" className="hover:text-foreground transition-colors">
+                support@clarityos.ai
               </a>
             </div>
           </div>

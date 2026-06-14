@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     redirect_url: `${appUrl}/api/flutterwave/verify`,
     customer: { email: user.email! },
     meta: { user_id: user.id, plan_id: plan.id, interval, tx_ref },
-    customizations: { title: "AscendMentor AI — Upgrade" },
+    customizations: { title: "ClarityOS — Upgrade" },
   });
 
   return NextResponse.json({ payment_link: link });

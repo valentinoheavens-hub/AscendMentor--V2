@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 import { EvidenceClient } from "@/components/evidence/evidence-client";
 
 export const metadata: Metadata = {
-  title: "Behavioural Evidence — AscendMentor AI",
+  title: "Behavioural Evidence — ClarityOS",
 };
 
 const DIMENSION_LABELS: Record<string, string> = {

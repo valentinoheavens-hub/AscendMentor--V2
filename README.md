@@ -1,4 +1,4 @@
-# AscendMentor AI
+# ClarityOS
 
 **The leadership operating system for African enterprises.** AI-powered leadership
 mastery built on the proprietary frameworks of Blackbelt Global Consulting (BGC),
@@ -10,7 +10,7 @@ founded by Dr. Valentino Heavens — *The Clarity Merchant™*.
 
 ## What it does
 
-AscendMentor turns BGC's executive consulting methodology into a measurable,
+ClarityOS turns BGC's executive consulting methodology into a measurable,
 self-serve leadership journey for African founders and executives.
 
 1. **Clarity Assessment™** — a 26-question diagnostic across 5 leadership dimensions

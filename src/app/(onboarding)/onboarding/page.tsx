@@ -1,7 +1,7 @@
 "use client";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// AscendMentor AI — 5-Step Onboarding Wizard
+// ClarityOS — 5-Step Onboarding Wizard
 // Directly derived from BGC Beta Screening Questions (doc 03).
 // Each step saves immediately so back-navigation preserves data.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -332,7 +332,7 @@ function Step5Form({
           90 days from now, what would success look like for you and your business?
         </Label>
         <p className="text-sm text-muted-foreground">
-          Paint the picture clearly. This becomes your Day 90 north star inside AscendMentor.
+          Paint the picture clearly. This becomes your Day 90 north star inside ClarityOS.
         </p>
         <Textarea
           id="success_criteria"

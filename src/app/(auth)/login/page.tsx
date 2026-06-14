@@ -67,7 +67,7 @@ function LoginForm() {
       <CardHeader className="space-y-1 pb-4">
         <CardTitle className="text-2xl font-display">Welcome back</CardTitle>
         <CardDescription>
-          Sign in to your AscendMentor AI account
+          Sign in to your ClarityOS account
         </CardDescription>
       </CardHeader>
       <CardContent>

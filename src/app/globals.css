@@ -48,96 +48,99 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ── BGC Brand — Light (default) ────────────────────────────────────────── */
+/* ── ClarityOS Brand — Light (default) ──────────────────────────────────────
+   Palette derived from the ClarityOS logo: deep navy → royal blue → cyan.   */
 :root {
-  /* Shadcn token overrides — BGC light palette (warm off-white + gold) */
-  --background:             #F9F6F0;
-  --foreground:             #1A1A1A;
+  /* Shadcn token overrides — ClarityOS light palette (clear blue-white) */
+  --background:             #F4F8FD;
+  --foreground:             #0B2447;
   --card:                   #FFFFFF;
-  --card-foreground:        #1A1A1A;
+  --card-foreground:        #0B2447;
   --popover:                #FFFFFF;
-  --popover-foreground:     #1A1A1A;
-  --primary:                #B8960C;
+  --popover-foreground:     #0B2447;
+  --primary:                #1B6FF3;
   --primary-foreground:     #FFFFFF;
-  --secondary:              #EFEAE0;
-  --secondary-foreground:   #1A1A1A;
-  --muted:                  #EFEAE0;
-  --muted-foreground:       #6B6960;
-  --accent:                 #E8E2D6;
-  --accent-foreground:      #1A1A1A;
+  --secondary:              #E8F1FD;
+  --secondary-foreground:   #0B2447;
+  --muted:                  #E8F1FD;
+  --muted-foreground:       #5A7290;
+  --accent:                 #DCEBFB;
+  --accent-foreground:      #0B2447;
   --destructive:            #DC2626;
-  --border:                 rgba(0,0,0,0.10);
-  --input:                  rgba(0,0,0,0.10);
-  --ring:                   #B8960C;
+  --border:                 rgba(11,36,71,0.10);
+  --input:                  rgba(11,36,71,0.10);
+  --ring:                   #1B6FF3;
   --radius:                 0.5rem;
 
   /* Chart — dimension colours (shared across themes) */
-  --chart-1: #B8960C;
-  --chart-2: #2563EB;
-  --chart-3: #059669;
-  --chart-4: #7C3AED;
-  --chart-5: #DC2626;
+  --chart-1: #0B2447;
+  --chart-2: #1B6FF3;
+  --chart-3: #16C0F0;
+  --chart-4: #2E90FA;
+  --chart-5: #0EA5C9;
 
   /* Sidebar */
   --sidebar:                #FFFFFF;
-  --sidebar-foreground:     #1A1A1A;
-  --sidebar-primary:        #B8960C;
+  --sidebar-foreground:     #0B2447;
+  --sidebar-primary:        #1B6FF3;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:         #EFEAE0;
-  --sidebar-accent-foreground: #1A1A1A;
-  --sidebar-border:         rgba(0,0,0,0.08);
-  --sidebar-ring:           #B8960C;
+  --sidebar-accent:         #E8F1FD;
+  --sidebar-accent-foreground: #0B2447;
+  --sidebar-border:         rgba(11,36,71,0.08);
+  --sidebar-ring:           #1B6FF3;
 
-  /* BGC brand tokens (shared) */
-  --brand-black:      #1A1A1A;
-  --brand-gold:       #B8960C;
-  --brand-gold-light: #F5C518;
-  --brand-maroon:     #7B1C2A;
-  --brand-off-white:  #F9F6F0;
+  /* ClarityOS brand tokens (shared) */
+  --brand-navy:        #0B2447;
+  --brand-blue:        #1B6FF3;
+  --brand-blue-bright: #2E90FA;
+  --brand-cyan:        #16C0F0;
+  --brand-mist:        #F4F8FD;
+  /* Signature ClarityOS gradient (royal blue → cyan) */
+  --brand-gradient:    linear-gradient(135deg, #1B6FF3 0%, #16C0F0 100%);
 
   /* Dimension colours (shared) */
-  --dim-direction:  #2563EB;
-  --dim-people:     #059669;
-  --dim-systems:    #7C3AED;
-  --dim-structure:  #DC2626;
-  --dim-leadership: #B8960C;
+  --dim-direction:  #1B6FF3;
+  --dim-people:     #16C0F0;
+  --dim-systems:    #2E90FA;
+  --dim-structure:  #0EA5C9;
+  --dim-leadership: #0B2447;
 
   color-scheme: light;
 }
 
-/* ── BGC Brand — Dark ───────────────────────────────────────────────────── */
+/* ── ClarityOS Brand — Dark ─────────────────────────────────────────────── */
 .dark {
-  --background:           #1A1A1A;
-  --foreground:           #F9F6F0;
-  --card:                 #222222;
-  --card-foreground:      #F9F6F0;
-  --popover:              #222222;
-  --popover-foreground:   #F9F6F0;
-  --primary:              #B8960C;
-  --primary-foreground:   #1A1A1A;
-  --secondary:            #2A2A2A;
-  --secondary-foreground: #F9F6F0;
-  --muted:                #2A2A2A;
-  --muted-foreground:     #888780;
-  --accent:               #333333;
-  --accent-foreground:    #F9F6F0;
-  --destructive:          #DC2626;
+  --background:           #07182E;
+  --foreground:           #EAF2FB;
+  --card:                 #0D2440;
+  --card-foreground:      #EAF2FB;
+  --popover:              #0D2440;
+  --popover-foreground:   #EAF2FB;
+  --primary:              #2E90FA;
+  --primary-foreground:   #06223F;
+  --secondary:            #122F50;
+  --secondary-foreground: #EAF2FB;
+  --muted:                #122F50;
+  --muted-foreground:     #8AA6C4;
+  --accent:               #163A63;
+  --accent-foreground:    #EAF2FB;
+  --destructive:          #F87171;
   --border:               rgba(255,255,255,0.08);
   --input:                rgba(255,255,255,0.06);
-  --ring:                 #B8960C;
-  --chart-1: #B8960C;
-  --chart-2: #2563EB;
-  --chart-3: #059669;
-  --chart-4: #7C3AED;
-  --chart-5: #DC2626;
-  --sidebar:              #111111;
-  --sidebar-foreground:   #F9F6F0;
-  --sidebar-primary:      #B8960C;
-  --sidebar-primary-foreground: #1A1A1A;
-  --sidebar-accent:       #2A2A2A;
-  --sidebar-accent-foreground: #F9F6F0;
+  --ring:                 #2E90FA;
+  --chart-1: #EAF2FB;
+  --chart-2: #2E90FA;
+  --chart-3: #16C0F0;
+  --chart-4: #60A5FA;
+  --chart-5: #38BDF8;
+  --sidebar:              #06223F;
+  --sidebar-foreground:   #EAF2FB;
+  --sidebar-primary:      #2E90FA;
+  --sidebar-primary-foreground: #06223F;
+  --sidebar-accent:       #122F50;
+  --sidebar-accent-foreground: #EAF2FB;
   --sidebar-border:       rgba(255,255,255,0.06);
-  --sidebar-ring:         #B8960C;
+  --sidebar-ring:         #2E90FA;
 
   color-scheme: dark;
 }
@@ -162,13 +165,16 @@
   }
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #333333; border-radius: 999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #888780; }
+  ::-webkit-scrollbar-thumb { background: #1B6FF3; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #16C0F0; }
 }
 
-/* ── BGC Utility Classes ─────────────────────────────────────────────────── */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #F5C518 0%, #B8960C 100%);
+/* ── ClarityOS Utility Classes ───────────────────────────────────────────── */
+/* Signature brand gradient text (royal blue → cyan). Legacy name kept so all
+   existing usages flow to the new ClarityOS palette automatically. */
+.text-gold-gradient,
+.text-brand-gradient {
+  background: linear-gradient(135deg, #1B6FF3 0%, #16C0F0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -201,12 +207,12 @@
 
 /* Chat bubbles */
 .chat-user {
-  background-color: #2A2A2A;
+  background-color: var(--secondary);
   border-radius: 12px 12px 4px 12px;
 }
 .chat-ai {
-  background-color: #222222;
-  border-left: 3px solid #B8960C;
+  background-color: var(--card);
+  border-left: 3px solid #1B6FF3;
   border-radius: 4px 12px 12px 12px;
 }
 
@@ -226,13 +232,17 @@
   stroke-linecap: round;
 }
 
-/* Gold CTA button override */
-.btn-gold {
-  background-color: #B8960C;
-  color: #1A1A1A;
+/* Primary CTA button — ClarityOS gradient (legacy .btn-gold name kept) */
+.btn-gold,
+.btn-brand {
+  background-image: linear-gradient(135deg, #1B6FF3 0%, #16C0F0 100%);
+  background-color: #1B6FF3;
+  color: #FFFFFF;
   font-weight: 600;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
-.btn-gold:hover { background-color: #F5C518; }
+.btn-gold:hover,
+.btn-brand:hover { filter: brightness(1.07); box-shadow: 0 8px 24px -8px rgba(27,111,243,0.5); }
 
 /* ── Landing page ────────────────────────────────────────────────────────── */
 .landing-grid-bg {
@@ -244,7 +254,10 @@
 }
 
 .landing-glow {
-  background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(184,150,12,0.18), transparent 70%);
+  background:
+    radial-gradient(ellipse 42% 36% at 30% 0%, rgba(27,111,243,0.22), transparent 70%),
+    radial-gradient(ellipse 38% 34% at 72% 8%, rgba(22,192,240,0.18), transparent 70%),
+    radial-gradient(ellipse 30% 30% at 52% 0%, rgba(124,58,237,0.12), transparent 72%);
 }
 
 @keyframes float-slow {
@@ -270,9 +283,9 @@
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .landing-card:hover {
-  border-color: rgba(184,150,12,0.45);
+  border-color: rgba(27,111,243,0.45);
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px -12px rgba(184,150,12,0.15);
+  box-shadow: 0 12px 40px -12px rgba(27,111,243,0.22);
 }
 
 @keyframes ticker-pulse {

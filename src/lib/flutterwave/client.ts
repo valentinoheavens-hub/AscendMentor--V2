@@ -40,7 +40,7 @@ export async function initializePayment(
       customer: params.customer,
       meta: params.meta ?? {},
       customizations: {
-        title: params.customizations?.title ?? "AscendMentor AI",
+        title: params.customizations?.title ?? "ClarityOS",
         logo: params.customizations?.logo,
       },
     }),

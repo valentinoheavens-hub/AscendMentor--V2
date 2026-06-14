@@ -26,7 +26,7 @@ import type {
 } from "@/types/platform";
 import type { WAIncomingMessage, WAContact } from "./types";
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://ascendmentor.ai";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://clarityos.ai";
 
 // Cast typed arrays to the `unknown` Supabase expects for JSONB columns
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -111,7 +111,7 @@ export async function handleIncomingMessage(
   if (lower === "help") {
     await sendText(
       phone,
-      `*AscendMentor AI — BGC Coach*\n\nType:\n• *menu* — your dashboard\n• *score* — current Mastery Score\n• *coach* — start coaching\n• *reflect* — weekly reflection\n\n${APP_URL}/dashboard`
+      `*ClarityOS — BGC Coach*\n\nType:\n• *menu* — your dashboard\n• *score* — current Mastery Score\n• *coach* — start coaching\n• *reflect* — weekly reflection\n\n${APP_URL}/dashboard`
     );
     return;
   }
@@ -151,7 +151,7 @@ async function flowOnboarding(
 ): Promise<void> {
   await sendText(
     phone,
-    `Welcome to *AscendMentor AI* — the BGC leadership mastery platform for African founders and executives.\n\nTo access your personalised BGC Coach, complete your profile at:\n\n👉 ${APP_URL}/signup\n\nOnce you finish the 5-step onboarding, your coach will be ready here.`
+    `Welcome to *ClarityOS* — the BGC leadership mastery platform for African founders and executives.\n\nTo access your personalised BGC Coach, complete your profile at:\n\n👉 ${APP_URL}/signup\n\nOnce you finish the 5-step onboarding, your coach will be ready here.`
   );
 }
 
@@ -389,7 +389,7 @@ async function sendMainMenu(phone: string, session: WASession): Promise<void> {
 
   await sendInteractive(phone, {
     type: "list",
-    header: { type: "text", text: "AscendMentor AI" },
+    header: { type: "text", text: "ClarityOS" },
     body: {
       text: `${scoreText}\n*Streak*: ${(session.streak_count as number) ?? 0} weeks\n\nWhat would you like to do?`,
     },

@@ -12,7 +12,7 @@ import { getPlanById } from "@/constants/subscription-plans";
 import type { SubscriptionTier } from "@/types/platform";
 
 export const metadata: Metadata = {
-  title: "Upgrade — AscendMentor AI",
+  title: "Upgrade — ClarityOS",
 };
 
 export default async function UpgradePage({

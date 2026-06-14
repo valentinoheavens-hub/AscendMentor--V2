@@ -55,7 +55,7 @@ export default function UpdatePasswordPage() {
       <CardHeader className="space-y-1 pb-4">
         <CardTitle className="text-2xl font-display">Set new password</CardTitle>
         <CardDescription>
-          Choose a strong password for your AscendMentor account.
+          Choose a strong password for your ClarityOS account.
         </CardDescription>
       </CardHeader>
       <CardContent>

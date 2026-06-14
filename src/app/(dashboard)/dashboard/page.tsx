@@ -102,7 +102,7 @@ export default async function DashboardPage() {
 
   // Score breakdown components
   const scoreComponents = [
-    { label: "Clarity Assessment", abbr: "CA", score: mastery?.ca_score ?? 0, max: 40, color: "#B8960C" },
+    { label: "Clarity Assessment", abbr: "CA", score: mastery?.ca_score ?? 0, max: 40, color: "#1B6FF3" },
     { label: "Behavioural Evidence", abbr: "BE", score: mastery?.be_score ?? 0, max: 25, color: "#059669" },
     { label: "Learning Progress", abbr: "LP", score: mastery?.lp_score ?? 0, max: 15, color: "#2563EB" },
     { label: "AI Session Quality", abbr: "AI", score: mastery?.ai_score ?? 0, max: 10, color: "#7C3AED" },

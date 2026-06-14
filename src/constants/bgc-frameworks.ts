@@ -60,7 +60,7 @@ export const BGC_DIMENSIONS = [
     pillar: 'leadership' as const,
     blackbelt_os_domain: 'leadership_governance',
     description: 'Personal leadership clarity, self-mastery, executive presence, and impact capacity',
-    color: '#B8960C',
+    color: '#F59E0B',
     weight: 0.20,
     question_count: 5,
     max_score: 20,

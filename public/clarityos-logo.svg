@@ -1,0 +1,29 @@
+<svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClarityOS — Clarity. Mastery. Scale.">
+  <defs>
+    <linearGradient id="clarityos-logo-grad" x1="10" y1="20" x2="110" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1B6FF3"/>
+      <stop offset="1" stop-color="#16C0F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark -->
+  <g transform="translate(8,28) scale(1.0)">
+    <path d="M46 13 A26 26 0 1 0 46 51" fill="none" stroke="url(#clarityos-logo-grad)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M24 40 a8 8 0 0 1 0.6 -15.9 a10 10 0 0 1 19 -1.2 a7 7 0 0 1 -1.6 13.8 Z" fill="url(#clarityos-logo-grad)"/>
+    <rect x="45.5" y="24" width="6" height="6" rx="1.4" fill="#1B6FF3"/>
+    <rect x="53" y="22" width="4.5" height="4.5" rx="1.1" fill="#2E90FA"/>
+    <rect x="45.5" y="33" width="5" height="5" rx="1.2" fill="#16C0F0"/>
+    <rect x="52.5" y="31.5" width="3.5" height="3.5" rx="1" fill="#16C0F0" opacity="0.85"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="92" y="62" font-family="'Jost','Segoe UI',Arial,sans-serif" font-size="48" font-weight="700" letter-spacing="-1">
+    <tspan fill="#0B2447">Clarity</tspan><tspan fill="url(#clarityos-logo-grad)">OS</tspan>
+  </text>
+
+  <!-- Taglines -->
+  <text x="94" y="88" font-family="'Jost','Segoe UI',Arial,sans-serif" font-size="16" font-weight="500" fill="#5A7290" letter-spacing="0.5">Clarity. Mastery. Scale.</text>
+  <text x="94" y="108" font-family="'Jost','Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" letter-spacing="2">
+    <tspan fill="#0B2447">SMART SaaS. </tspan><tspan fill="#1B6FF3">CLEAR IMPACT.</tspan>
+  </text>
+</svg>

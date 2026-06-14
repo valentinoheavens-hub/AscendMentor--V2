@@ -4,10 +4,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
-import Image from "next/image";
+import { Logo } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
-  title: "AscendMentor AI — Sign In",
+  title: "ClarityOS — Sign In",
   description: "Leadership mastery for African founders and executives.",
 };
 
@@ -23,31 +23,21 @@ export default function AuthLayout({
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #B8960C 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, #1B6FF3 1px, transparent 0)`,
             backgroundSize: "40px 40px",
           }}
         />
-        {/* Gold glow top-right */}
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        {/* Subtle glow bottom-left */}
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        {/* Brand glow top-right */}
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+        {/* Cyan glow bottom-left */}
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl" />
+        {/* Violet accent */}
+        <div className="absolute top-1/3 -left-24 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl" />
       </div>
 
       {/* Logo mark */}
-      <div className="mb-8 text-center">
-        <div className="inline-flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg font-display">A</span>
-          </div>
-          <div className="text-left">
-            <p className="text-foreground font-display font-bold text-lg leading-none">
-              AscendMentor
-            </p>
-            <p className="text-muted-foreground text-xs tracking-widest uppercase">
-              AI by BGC
-            </p>
-          </div>
-        </div>
+      <div className="mb-8 flex justify-center">
+        <Logo markClassName="h-10 w-10" wordmarkClassName="text-xl" showTagline />
       </div>
 
       {/* Auth card */}

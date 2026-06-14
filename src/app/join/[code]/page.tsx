@@ -9,6 +9,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Building2, XCircle, Users } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { Logo } from "@/components/brand/logo";
 import {
   getOrganisationByInviteCode,
   countOrgMembers,
@@ -16,7 +17,7 @@ import {
 } from "@/lib/organisations";
 
 export const metadata: Metadata = {
-  title: "Join your organisation — AscendMentor AI",
+  title: "Join your organisation — ClarityOS",
 };
 
 export default async function JoinPage({
@@ -82,7 +83,7 @@ export default async function JoinPage({
           icon={<XCircle className="h-7 w-7" />}
           iconClass="text-red-400 bg-red-500/10"
           title="Couldn't join the organisation"
-          body="Something went wrong joining this organisation. Please try again, or contact support@ascendmentor.ai."
+          body="Something went wrong joining this organisation. Please try again, or contact support@clarityos.ai."
         />
       </Shell>
     );
@@ -100,10 +101,10 @@ export default async function JoinPage({
           Institutional invite
         </p>
         <h1 className="font-display text-xl font-bold text-foreground">
-          Join {org.name} on AscendMentor AI
+          Join {org.name} on ClarityOS
         </h1>
         <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-          {org.name} has licensed AscendMentor AI for its leadership team. Create
+          {org.name} has licensed ClarityOS for its leadership team. Create
           your account and your access is activated immediately — no review queue.
         </p>
 
@@ -129,14 +130,8 @@ export default async function JoinPage({
 function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-5">
-      <div className="flex items-center gap-3 mb-10">
-        <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-          <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-        </div>
-        <div>
-          <p className="font-display font-bold text-sm leading-none">AscendMentor</p>
-          <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">AI by BGC</p>
-        </div>
+      <div className="mb-10">
+        <Logo markClassName="h-9 w-9" wordmarkClassName="text-base" />
       </div>
       {children}
     </div>
@@ -165,7 +160,7 @@ function StateCard({
         href="/"
         className="mt-6 inline-block text-sm text-yellow-400 hover:text-yellow-300 transition-colors"
       >
-        ← Back to AscendMentor AI
+        ← Back to ClarityOS
       </Link>
     </div>
   );

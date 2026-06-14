@@ -11,7 +11,7 @@ import { createClient } from "@/lib/supabase/server";
 import { AssessmentWizard } from "@/components/assessment/wizard";
 
 export const metadata: Metadata = {
-  title: "Clarity Assessment™ — AscendMentor AI",
+  title: "Clarity Assessment™ — ClarityOS",
 };
 
 export default async function AssessmentPage() {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Menu, LayoutDashboard, BarChart3, MessageSquare, Star, Settings, LogOut, Trophy, Sparkles, ClipboardCheck } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Logo } from "@/components/brand/logo";
 import { cn } from "@/lib/utils";
 
 interface MobileNavProps {
@@ -32,14 +33,8 @@ export function MobileNav({ displayName, belt }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent side="left" className="bg-card border-r border-border/50 p-0 w-64">
         {/* Brand */}
-        <div className="flex items-center gap-3 px-5 py-5 border-b border-border/40">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-            <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-          </div>
-          <div>
-            <p className="font-display font-bold text-sm text-foreground leading-none">AscendMentor</p>
-            <p className="text-[10px] text-muted-foreground tracking-wider uppercase mt-0.5">AI by BGC</p>
-          </div>
+        <div className="flex items-center px-5 py-5 border-b border-border/40">
+          <Logo markClassName="h-8 w-8" wordmarkClassName="text-sm" />
         </div>
 
         {/* User */}

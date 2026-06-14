@@ -1,0 +1,14 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClarityOS">
+  <defs>
+    <linearGradient id="clarityos-mark-grad" x1="6" y1="10" x2="58" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1B6FF3"/>
+      <stop offset="1" stop-color="#16C0F0"/>
+    </linearGradient>
+  </defs>
+  <path d="M46 13 A26 26 0 1 0 46 51" fill="none" stroke="url(#clarityos-mark-grad)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M24 40 a8 8 0 0 1 0.6 -15.9 a10 10 0 0 1 19 -1.2 a7 7 0 0 1 -1.6 13.8 Z" fill="url(#clarityos-mark-grad)"/>
+  <rect x="45.5" y="24" width="6" height="6" rx="1.4" fill="#1B6FF3"/>
+  <rect x="53" y="22" width="4.5" height="4.5" rx="1.1" fill="#2E90FA"/>
+  <rect x="45.5" y="33" width="5" height="5" rx="1.2" fill="#16C0F0"/>
+  <rect x="52.5" y="31.5" width="3.5" height="3.5" rx="1" fill="#16C0F0" opacity="0.85"/>
+</svg>

@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
+import { LogoMark } from "@/components/brand/logo";
 
-export const metadata = { title: "AscendMentor Admin" };
+export const metadata = { title: "ClarityOS Admin" };
 
 export default async function AdminLayout({
   children,
@@ -24,11 +25,15 @@ export default async function AdminLayout({
     <div className="min-h-screen bg-[#0a0a0f] text-white flex">
       {/* Sidebar */}
       <aside className="w-60 shrink-0 border-r border-white/10 flex flex-col bg-[#0d0d14]">
-        <div className="px-6 py-5 border-b border-white/10">
-          <p className="text-xs font-semibold tracking-widest text-[#c9a84c] uppercase">
-            AscendMentor
-          </p>
-          <p className="text-[11px] text-white/40 mt-0.5">Admin Console</p>
+        <div className="px-6 py-5 border-b border-white/10 flex items-center gap-2.5">
+          <LogoMark className="h-7 w-7" />
+          <div>
+            <p className="font-display font-bold text-sm leading-none">
+              <span className="text-white">Clarity</span>
+              <span className="text-brand-gradient">OS</span>
+            </p>
+            <p className="text-[11px] text-white/40 mt-0.5">Admin Console</p>
+          </div>
         </div>
 
         <nav className="flex-1 px-3 py-4 space-y-1">

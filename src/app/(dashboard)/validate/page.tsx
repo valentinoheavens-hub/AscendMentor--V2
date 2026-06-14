@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { PeerValidationClient } from "@/components/validation/peer-validation-client";
 
 export const metadata: Metadata = {
-  title: "Peer Validation — AscendMentor AI",
+  title: "Peer Validation — ClarityOS",
 };
 
 export default async function ValidatePage() {

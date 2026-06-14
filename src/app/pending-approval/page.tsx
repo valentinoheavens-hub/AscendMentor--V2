@@ -7,9 +7,10 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Clock, XCircle, PauseCircle, LogOut, Mail } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { Logo } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
-  title: "Application Under Review — AscendMentor AI",
+  title: "Application Under Review — ClarityOS",
 };
 
 const COPY = {
@@ -17,14 +18,14 @@ const COPY = {
     icon: Clock,
     iconClass: "text-yellow-400 bg-yellow-500/10",
     title: "Your application is under review",
-    body: "Thank you for applying to AscendMentor AI. Our team personally reviews every application to keep the community focused on serious founders and executives. You'll hear from us within 48 hours.",
+    body: "Thank you for applying to ClarityOS. Our team personally reviews every application to keep the community focused on serious founders and executives. You'll hear from us within 48 hours.",
     footer: "We review applications daily, Monday to Saturday.",
   },
   declined: {
     icon: XCircle,
     iconClass: "text-red-400 bg-red-500/10",
     title: "Your application wasn't approved",
-    body: "AscendMentor AI is currently focused on founders and senior executives leading active organisations. Based on your application we weren't able to offer access at this time — but circumstances change, and you're welcome to get in touch.",
+    body: "ClarityOS is currently focused on founders and senior executives leading active organisations. Based on your application we weren't able to offer access at this time — but circumstances change, and you're welcome to get in touch.",
     footer: "Think this was a mistake? Email us and tell us more about your role.",
   },
   inactive: {
@@ -66,14 +67,8 @@ export default async function PendingApprovalPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-5">
       {/* Brand */}
-      <div className="flex items-center gap-3 mb-10">
-        <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-          <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-        </div>
-        <div>
-          <p className="font-display font-bold text-sm leading-none">AscendMentor</p>
-          <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">AI by BGC</p>
-        </div>
+      <div className="mb-10">
+        <Logo markClassName="h-9 w-9" wordmarkClassName="text-base" />
       </div>
 
       <div className="w-full max-w-md bg-card border border-border/50 rounded-3xl p-8 text-center">
@@ -92,11 +87,11 @@ export default async function PendingApprovalPage() {
         <div className="mt-6 pt-6 border-t border-border/40">
           <p className="text-xs text-muted-foreground">{state.footer}</p>
           <a
-            href="mailto:support@ascendmentor.ai"
+            href="mailto:support@clarityos.ai"
             className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-yellow-400 hover:text-yellow-300 transition-colors"
           >
             <Mail className="h-4 w-4" />
-            support@ascendmentor.ai
+            support@clarityos.ai
           </a>
         </div>
       </div>

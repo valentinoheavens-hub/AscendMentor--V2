@@ -225,7 +225,7 @@ function StatCard({
     <div
       className={`rounded-xl border p-5 flex flex-col gap-1 ${
         accent
-          ? "border-[#c9a84c]/20 bg-[#c9a84c]/5"
+          ? "border-[#1B6FF3]/20 bg-[#1B6FF3]/5"
           : "border-white/10 bg-white/3"
       }`}
     >

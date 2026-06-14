@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     phone: normalizedPhone,
     amount,
     accountRef: `AM-${plan.id.toUpperCase()}`,
-    description: `AscendMentor ${plan.name} ${interval}`,
+    description: `ClarityOS ${plan.name} ${interval}`,
     callbackUrl: `${appUrl}/api/mpesa/callback?user_id=${user.id}&plan_id=${plan.id}`,
   });
 

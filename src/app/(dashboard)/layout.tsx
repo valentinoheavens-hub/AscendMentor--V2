@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/brand/logo";
 import { getBeltForScore } from "@/constants/bgc-frameworks";
 import {
   LayoutDashboard,
@@ -25,7 +26,7 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
-  title: "AscendMentor AI — Dashboard",
+  title: "ClarityOS — Dashboard",
 };
 
 const NAV_ITEMS = [
@@ -84,14 +85,8 @@ export default async function DashboardLayout({
       {/* ── Sidebar ── */}
       <aside className="hidden lg:flex flex-col w-60 bg-card border-r border-border/50 fixed inset-y-0 left-0 z-30">
         {/* Brand */}
-        <div className="flex items-center gap-3 px-5 py-5 border-b border-border/40">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-            <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-          </div>
-          <div>
-            <p className="font-display font-bold text-sm text-foreground leading-none">AscendMentor</p>
-            <p className="text-[10px] text-muted-foreground tracking-wider uppercase mt-0.5">AI by BGC</p>
-          </div>
+        <div className="flex items-center px-5 py-5 border-b border-border/40">
+          <Logo markClassName="h-8 w-8" wordmarkClassName="text-sm" />
         </div>
 
         {/* Learner belt badge */}
@@ -140,12 +135,7 @@ export default async function DashboardLayout({
           {/* Mobile header: hamburger + logo */}
           <div className="flex items-center gap-3 lg:hidden">
             <MobileNav displayName={displayName} belt={belt} />
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xs font-display">A</span>
-              </div>
-              <span className="font-display font-semibold text-sm">AscendMentor</span>
-            </div>
+            <Logo markClassName="h-7 w-7" wordmarkClassName="text-sm" />
           </div>
 
           {/* BGC tagline — visible desktop */}

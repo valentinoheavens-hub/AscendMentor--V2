@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { SettingsClient } from "@/components/settings/settings-client";
 
 export const metadata: Metadata = {
-  title: "Settings — AscendMentor AI",
+  title: "Settings — ClarityOS",
 };
 
 export default async function SettingsPage() {

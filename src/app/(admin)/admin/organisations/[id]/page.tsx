@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { updateOrganisationStatus, updateOrganisationSeats } from "@/lib/actions/admin";
 
-export const metadata = { title: "Organisation — AscendMentor Admin" };
+export const metadata = { title: "Organisation — ClarityOS Admin" };
 export const dynamic = "force-dynamic";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -18,7 +18,7 @@ const BELT_COLORS: Record<string, string> = {
   yellow_belt: "#eab308",
   green_belt: "#22c55e",
   blue_belt: "#3b82f6",
-  black_belt: "#c9a84c",
+  black_belt: "#C9A24B",
 };
 
 export default async function OrganisationDetailPage({
@@ -138,9 +138,9 @@ export default async function OrganisationDetailPage({
               type="number"
               min={1}
               defaultValue={org.seat_count}
-              className="w-16 bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-[#c9a84c]/50"
+              className="w-16 bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-[#1B6FF3]/50"
             />
-            <button type="submit" className="text-[11px] text-white/40 hover:text-[#c9a84c] transition-colors">
+            <button type="submit" className="text-[11px] text-white/40 hover:text-[#1B6FF3] transition-colors">
               Update
             </button>
           </form>
@@ -148,7 +148,7 @@ export default async function OrganisationDetailPage({
 
         <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[11px] text-white/30 uppercase tracking-wider">Avg Mastery Score</p>
-          <p className="text-2xl font-bold text-[#c9a84c] mt-1">{avgScore ?? "—"}</p>
+          <p className="text-2xl font-bold text-[#1B6FF3] mt-1">{avgScore ?? "—"}</p>
           <p className="text-[11px] text-white/30 mt-1">{scored} of {used} assessed</p>
         </div>
 
@@ -169,11 +169,11 @@ export default async function OrganisationDetailPage({
       </div>
 
       {/* Invite link */}
-      <div className="rounded-xl border border-[#c9a84c]/30 bg-[#c9a84c]/5 p-5 mb-10">
+      <div className="rounded-xl border border-[#1B6FF3]/30 bg-[#1B6FF3]/5 p-5 mb-10">
         <p className="text-[11px] text-white/40 uppercase tracking-wider mb-1.5">
           Invite link — members joining via this link are approved automatically
         </p>
-        <p className="font-mono text-sm text-[#c9a84c] break-all select-all">
+        <p className="font-mono text-sm text-[#1B6FF3] break-all select-all">
           {APP_URL}/join/{org.invite_code}
         </p>
       </div>

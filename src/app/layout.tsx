@@ -19,12 +19,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://clarityos.ai"),
   title: {
-    default: "AscendMentor AI — Clarity. Mastery. Scale.",
-    template: "%s | AscendMentor AI",
+    default: "ClarityOS — Clarity. Mastery. Scale.",
+    template: "%s | ClarityOS",
   },
   description:
-    "The AI-powered leadership mastery platform for African founders and executives. Built on BGC's five proprietary frameworks. Measure your Mastery Score™.",
+    "Smart SaaS. Clear impact. The AI-powered leadership mastery platform for African founders and executives, built on BGC's five proprietary frameworks. Measure your Mastery Score™.",
+  applicationName: "ClarityOS",
   keywords: [
     "leadership coaching",
     "African executives",
@@ -34,16 +36,31 @@ export const metadata: Metadata = {
     "Dr. Valentino Heavens",
     "Clarity Mandate",
     "Mastery Score",
+    "ClarityOS",
   ],
   authors: [{ name: "Dr. Valentino Heavens", url: "https://blackbeltglobal.co" }],
   creator: "Blackbelt Global Consulting Limited",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/clarityos-mark.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_NG",
-    siteName: "AscendMentor AI",
-    title: "AscendMentor AI — Clarity. Mastery. Scale.",
+    siteName: "ClarityOS",
+    title: "ClarityOS — Clarity. Mastery. Scale.",
     description:
-      "AI-powered leadership mastery for African founders and executives. Built on BGC's proprietary frameworks.",
+      "Smart SaaS. Clear impact. AI-powered leadership mastery for African founders and executives, built on BGC's proprietary frameworks.",
+    images: [{ url: "/clarityos-logo.svg", width: 460, height: 120, alt: "ClarityOS" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ClarityOS — Clarity. Mastery. Scale.",
+    description: "Smart SaaS. Clear impact. AI-powered leadership mastery for African leaders.",
+    images: ["/clarityos-logo.svg"],
   },
   robots: {
     index: true,

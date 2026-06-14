@@ -31,7 +31,7 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: { payl
   );
 }
 
-export function ClarityRadar({ data, color = "#B8960C" }: ClarityRadarProps) {
+export function ClarityRadar({ data, color = "#1B6FF3" }: ClarityRadarProps) {
   return (
     <ResponsiveContainer width="100%" height={280}>
       <RadarChart cx="50%" cy="50%" outerRadius="72%" data={data}>

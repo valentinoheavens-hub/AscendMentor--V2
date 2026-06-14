@@ -3,7 +3,7 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { updateInquiryStatus } from "@/lib/actions/admin";
 
-export const metadata = { title: "Inquiries — AscendMentor Admin" };
+export const metadata = { title: "Inquiries — ClarityOS Admin" };
 export const dynamic = "force-dynamic";
 
 const STATUS_STYLES: Record<string, string> = {
@@ -49,7 +49,7 @@ export default async function InquiriesPage() {
                   </div>
                   <p className="text-sm text-white/50 mt-1">
                     {inq.contact_name} ·{" "}
-                    <a href={`mailto:${inq.contact_email}`} className="text-[#c9a84c] hover:underline">
+                    <a href={`mailto:${inq.contact_email}`} className="text-[#1B6FF3] hover:underline">
                       {inq.contact_email}
                     </a>
                     {inq.phone ? ` · ${inq.phone}` : ""}
@@ -99,7 +99,7 @@ export default async function InquiriesPage() {
               </div>
 
               {inq.message && (
-                <p className="mt-3 text-sm text-white/60 leading-relaxed border-l-2 border-[#c9a84c]/40 pl-3">
+                <p className="mt-3 text-sm text-white/60 leading-relaxed border-l-2 border-[#1B6FF3]/40 pl-3">
                   {inq.message}
                 </p>
               )}

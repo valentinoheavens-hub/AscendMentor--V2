@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// AscendMentor AI — Subscription Plan Definitions
+// ClarityOS — Subscription Plan Definitions
 // Amounts in cents/kobo (Paystack lowest denomination)
 // Update display prices and amounts to match your Paystack dashboard plans.
 // ─────────────────────────────────────────────────────────────────────────────

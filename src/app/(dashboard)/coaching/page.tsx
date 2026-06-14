@@ -7,7 +7,7 @@ import { ChatInterface } from "@/components/coaching/chat-interface";
 import type { SessionType } from "@/types/platform";
 
 export const metadata: Metadata = {
-  title: "BGC AI Coach — AscendMentor AI",
+  title: "BGC AI Coach — ClarityOS",
 };
 
 const SESSION_TYPES: { id: SessionType; label: string; desc: string }[] = [

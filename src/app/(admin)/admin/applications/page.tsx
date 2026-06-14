@@ -7,7 +7,7 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { approveLearner, declineLearner } from "@/lib/actions/admin";
 
-export const metadata = { title: "Applications — AscendMentor Admin" };
+export const metadata = { title: "Applications — ClarityOS Admin" };
 export const dynamic = "force-dynamic";
 
 export default async function ApplicationsPage() {
@@ -189,7 +189,7 @@ function Answer({ label, text }: { label: string; text: string | null | undefine
   return (
     <div className="mt-3">
       <p className="text-[10px] text-white/30 uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-white/70 leading-relaxed border-l-2 border-[#c9a84c]/40 pl-3">
+      <p className="text-sm text-white/70 leading-relaxed border-l-2 border-[#1B6FF3]/40 pl-3">
         {text}
       </p>
     </div>

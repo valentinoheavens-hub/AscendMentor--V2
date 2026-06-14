@@ -92,12 +92,12 @@ export default async function LearnersPage({
           name="q"
           defaultValue={q ?? ""}
           placeholder="Search name, email, org…"
-          className="flex-1 min-w-52 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#c9a84c]/50 focus:ring-1 focus:ring-[#c9a84c]/20"
+          className="flex-1 min-w-52 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#1B6FF3]/50 focus:ring-1 focus:ring-[#1B6FF3]/20"
         />
         <select
           name="belt"
           defaultValue={belt ?? ""}
-          className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#c9a84c]/50"
+          className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#1B6FF3]/50"
         >
           <option value="">All Belts</option>
           <option value="seeker">Seeker</option>
@@ -109,7 +109,7 @@ export default async function LearnersPage({
         <select
           name="status"
           defaultValue={status ?? ""}
-          className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#c9a84c]/50"
+          className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[#1B6FF3]/50"
         >
           <option value="">All Statuses</option>
           <option value="active">Active</option>
@@ -120,7 +120,7 @@ export default async function LearnersPage({
         </select>
         <button
           type="submit"
-          className="bg-[#c9a84c] hover:bg-[#d4b563] text-black font-semibold text-sm px-5 py-2 rounded-lg transition-colors"
+          className="bg-[#1B6FF3] hover:bg-[#2E90FA] text-black font-semibold text-sm px-5 py-2 rounded-lg transition-colors"
         >
           Filter
         </button>

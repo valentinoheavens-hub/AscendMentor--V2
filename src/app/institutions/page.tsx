@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Logo } from "@/components/brand/logo";
 import {
   ArrowLeft,
   BarChart3,
@@ -17,9 +18,9 @@ import {
 import { InquiryForm } from "@/components/landing/inquiry-form";
 
 export const metadata: Metadata = {
-  title: "For Institutions — AscendMentor AI",
+  title: "For Institutions — ClarityOS",
   description:
-    "Seat-based AscendMentor AI licences for banks, government agencies, universities and corporates. Build leadership clarity across your whole management layer.",
+    "Seat-based ClarityOS licences for banks, government agencies, universities and corporates. Build leadership clarity across your whole management layer.",
 };
 
 const BENEFITS = [
@@ -58,14 +59,8 @@ export default function InstitutionsPage() {
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
         <nav className="max-w-6xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm font-display">A</span>
-            </div>
-            <div>
-              <p className="font-display font-bold text-sm leading-none">AscendMentor</p>
-              <p className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase mt-0.5">AI by BGC</p>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Logo markClassName="h-8 w-8" wordmarkClassName="text-base" />
           </Link>
           <Link
             href="/"
@@ -90,7 +85,7 @@ export default function InstitutionsPage() {
           </h1>
           <p className="mt-5 text-base lg:text-lg text-muted-foreground leading-relaxed">
             One executive with clarity is an asset. A whole leadership team with
-            clarity is a different institution. AscendMentor AI Enterprise gives every
+            clarity is a different institution. ClarityOS Enterprise gives every
             leader in your organisation the Clarity Assessment™, 24/7 BGC coaching,
             and a measurable mastery journey — with team-level analytics for you.
           </p>
@@ -154,8 +149,8 @@ export default function InstitutionsPage() {
       <footer className="border-t border-border/40 py-10">
         <p className="text-center text-[11px] text-muted-foreground/60">
           © {new Date().getFullYear()} Blackbelt Global Consulting Limited ·{" "}
-          <a href="mailto:support@ascendmentor.ai" className="hover:text-foreground transition-colors">
-            support@ascendmentor.ai
+          <a href="mailto:support@clarityos.ai" className="hover:text-foreground transition-colors">
+            support@clarityos.ai
           </a>
         </p>
       </footer>

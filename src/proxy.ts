@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// AscendMentor AI — Route Protection Proxy (Next.js 16+)
+// ClarityOS — Route Protection Proxy (Next.js 16+)
 // Supabase SSR session check on every request.
 // Auth routes → redirect to /dashboard if already signed in.
 // Protected routes → redirect to /login if not signed in.

@@ -504,8 +504,8 @@ export function UpgradePlans({
 
       <p className="text-center text-xs text-muted-foreground">
         Secure payment · Cancel any time · Questions?{" "}
-        <a href="mailto:support@ascendmentor.ai" className="underline underline-offset-2 hover:text-foreground">
-          support@ascendmentor.ai
+        <a href="mailto:support@clarityos.ai" className="underline underline-offset-2 hover:text-foreground">
+          support@clarityos.ai
         </a>
       </p>
     </div>

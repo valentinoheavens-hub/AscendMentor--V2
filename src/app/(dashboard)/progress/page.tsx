@@ -8,7 +8,7 @@ import { getBeltForScore } from "@/constants/bgc-frameworks";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "My Progress — AscendMentor AI",
+  title: "My Progress — ClarityOS",
 };
 
 const DIMENSION_LABELS: Record<string, string> = {
