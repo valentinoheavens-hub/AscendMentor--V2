@@ -21,10 +21,10 @@ export function Logo({ className = "h-9 w-auto", priority = false }: LogoProps) 
   return (
     <span className="inline-flex items-center dark:rounded-lg dark:bg-white dark:px-2 dark:py-1">
       <Image
-        src="/clarityos-logo.png"
+        src="/clarityos-logo-v2.png"
         alt="ClarityOS — Clarity. Mastery. Scale."
-        width={1024}
-        height={405}
+        width={1008}
+        height={251}
         priority={priority}
         className={className}
       />
