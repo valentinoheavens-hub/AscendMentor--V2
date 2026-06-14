@@ -6,7 +6,7 @@ import {
   CheckCircle2, Loader2, Zap, Crown, Shield,
   Smartphone, CreditCard, Banknote, Building2,
 } from "lucide-react";
-import { SUBSCRIPTION_PLANS } from "@/constants/subscription-plans";
+import { SUBSCRIPTION_PLANS, planPrice, providerCurrency } from "@/constants/subscription-plans";
 import type { PaymentProvider } from "@/constants/subscription-plans";
 import { cn } from "@/lib/utils";
 import type { SubscriptionTier } from "@/types/platform";
@@ -139,8 +139,7 @@ function MPesaPhoneModal({
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const displayPrice =
-    interval === "annual" ? plan.display_annual_kes : plan.display_monthly_kes;
+  const displayPrice = planPrice(plan, "KES", interval).display;
 
   const handleSubmit = async () => {
     if (!phone.trim()) {
@@ -220,7 +219,7 @@ export function UpgradePlans({
   const [mpesaCheckoutId, setMpesaCheckoutId] = useState<string | null>(null);
   const [mpesaActivePlanId, setMpesaActivePlanId] = useState<SubscriptionTier | null>(null);
 
-  const annualSavingsPct = 32;
+  const annualSavingsPct = 17; // 2 months free on annual billing
 
   const handleUpgrade = async (planId: SubscriptionTier) => {
     if (planId === "free" || planId === currentTier) return;
@@ -367,14 +366,9 @@ export function UpgradePlans({
           const isCurrent = plan.id === currentTier;
           const isLoading = loading === plan.id;
 
-          const displayPrice =
-            provider === "mpesa"
-              ? interval === "annual"
-                ? plan.display_annual_kes
-                : plan.display_monthly_kes
-              : interval === "annual"
-              ? plan.display_annual
-              : plan.display_monthly;
+          // Price shown follows the selected processor's currency
+          // (Paystack→₦, Flutterwave→$, M-Pesa→KES).
+          const displayPrice = planPrice(plan, providerCurrency(provider), interval).display;
 
           const perPeriod =
             plan.id === "free" ? "forever" : interval === "annual" ? "/year" : "/month";

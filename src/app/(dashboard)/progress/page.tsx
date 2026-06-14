@@ -122,10 +122,10 @@ export default async function ProgressPage() {
             Latest Mastery Breakdown
           </h2>
           {[
-            { key: "ca_score", label: "Clarity Assessment", max: 40 },
+            { key: "ca_score", label: "Clarity Assessment", max: 30 },
             { key: "be_score", label: "Behavioural Evidence", max: 25 },
-            { key: "lp_score", label: "Learning Progress", max: 15 },
-            { key: "ai_score", label: "AI Session Quality", max: 10 },
+            { key: "lp_score", label: "Learning Progress", max: 20 },
+            { key: "ai_score", label: "AI Session Quality", max: 15 },
             { key: "ps_score", label: "Peer Validation", max: 10 },
           ].map(({ key, label, max }) => {
             const val = (latest as unknown as Record<string, number>)[key] ?? 0;

@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { stkPush, normalizePhone } from "@/lib/mpesa/client";
-import { SUBSCRIPTION_PLANS } from "@/constants/subscription-plans";
+import { SUBSCRIPTION_PLANS, planPrice } from "@/constants/subscription-plans";
 import type { SubscriptionTier } from "@/types/platform";
 
 export async function POST(req: NextRequest) {
@@ -29,8 +29,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
-  const amount =
-    interval === "annual" ? plan.amount_annual_kes : plan.amount_monthly_kes;
+  // M-Pesa charges in Kenyan shillings.
+  const { amount } = planPrice(plan, "KES", interval);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
   const normalizedPhone = normalizePhone(phone);
 

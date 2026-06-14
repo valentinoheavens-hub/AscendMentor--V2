@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { initializePayment } from "@/lib/flutterwave/client";
-import { SUBSCRIPTION_PLANS } from "@/constants/subscription-plans";
+import { SUBSCRIPTION_PLANS, planPrice } from "@/constants/subscription-plans";
 import type { SubscriptionTier } from "@/types/platform";
 
 function generateRef(): string {
@@ -27,14 +27,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
-  const amount = interval === "annual" ? plan.amount_annual : plan.amount_monthly;
+  // Flutterwave serves the diaspora — charge in USD.
+  const { amount } = planPrice(plan, "USD", interval);
   const tx_ref = generateRef();
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
   const { link } = await initializePayment({
     tx_ref,
     amount: amount / 100, // Flutterwave takes whole USD, not cents
-    currency: plan.currency,
+    currency: "USD",
     redirect_url: `${appUrl}/api/flutterwave/verify`,
     customer: { email: user.email! },
     meta: { user_id: user.id, plan_id: plan.id, interval, tx_ref },

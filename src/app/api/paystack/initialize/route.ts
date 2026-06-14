@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { initializeTransaction } from "@/lib/paystack/client";
-import { SUBSCRIPTION_PLANS } from "@/constants/subscription-plans";
+import { SUBSCRIPTION_PLANS, planPrice } from "@/constants/subscription-plans";
 import type { SubscriptionTier } from "@/types/platform";
 
 function generateRef(): string {
@@ -29,7 +29,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
 
-  const amount = interval === "annual" ? plan.amount_annual : plan.amount_monthly;
+  // Paystack charges in Naira (kobo) — ClarityOS's primary market.
+  const { amount } = planPrice(plan, "NGN", interval);
   const reference = generateRef();
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -37,7 +38,7 @@ export async function POST(req: NextRequest) {
     email: user.email!,
     amount,
     reference,
-    currency: plan.currency,
+    currency: "NGN",
     callback_url: `${appUrl}/api/paystack/verify?reference=${reference}`,
     metadata: {
       user_id: user.id,

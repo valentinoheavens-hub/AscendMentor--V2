@@ -63,10 +63,10 @@ const DIMENSIONS = [
 ];
 
 const SCORE_COMPONENTS = [
-  { label: "Clarity Assessment", pts: 40, color: "#2563EB" },
+  { label: "Clarity Assessment", pts: 30, color: "#2563EB" },
   { label: "Behavioural Evidence", pts: 25, color: "#059669" },
-  { label: "Learning Progress", pts: 15, color: "#7C3AED" },
-  { label: "AI Session Quality", pts: 10, color: "#DC2626" },
+  { label: "Learning Progress", pts: 20, color: "#7C3AED" },
+  { label: "AI Session Quality", pts: 15, color: "#DC2626" },
   { label: "Peer Validation", pts: 10, color: "#16C0F0" },
 ];
 
@@ -115,7 +115,7 @@ const PLANS = [
   },
   {
     name: "Builder",
-    price: "$49",
+    price: "₦75,000",
     period: "/month",
     highlight: true,
     cta: "Upgrade to Builder",
@@ -130,7 +130,7 @@ const PLANS = [
   },
   {
     name: "Professional",
-    price: "$99",
+    price: "₦180,000",
     period: "/month",
     highlight: false,
     cta: "Go Professional",
