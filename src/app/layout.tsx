@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Jost, Inter } from "next/font/google";
-import Script from "next/script";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -79,10 +78,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Set the theme before paint to avoid a flash. Stored choice wins;
-            otherwise default to the brand's dark theme. */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=localStorage.getItem('theme');var dark=t?t==='dark':false;var e=document.documentElement;e.classList.toggle('dark',dark);e.style.colorScheme=dark?'dark':'light';}catch(e){}})();`}
-        </Script>
+            otherwise default to the brand's light theme. Plain inline script
+            (not next/script) is the App Router pattern and avoids the
+            self.__next_s bootstrap wrapper that breaks hydration. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var dark=t?t==='dark':false;var e=document.documentElement;e.classList.toggle('dark',dark);e.style.colorScheme=dark?'dark':'light';}catch(e){}})();`,
+          }}
+        />
       </head>
       <body
         className="min-h-dvh bg-background text-foreground antialiased"
