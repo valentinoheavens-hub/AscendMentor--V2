@@ -253,8 +253,9 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
                       />
                       <defs>
                         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#1B6FF3" />
-                          <stop offset="100%" stopColor="#16C0F0" />
+                          <stop offset="0%" stopColor="#FCD34D" />
+                          <stop offset="55%" stopColor="#F5C518" />
+                          <stop offset="100%" stopColor="#B8860B" />
                         </linearGradient>
                       </defs>
                     </svg>
