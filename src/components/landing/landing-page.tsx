@@ -156,12 +156,12 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* ── Nav ── */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <nav className="max-w-6xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+        <nav className="max-w-6xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <Logo className="h-9 w-auto" priority />
+            <Logo className="h-12 w-auto" priority />
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+          <div className="hidden md:flex items-center gap-7 text-base text-muted-foreground">
             <a href="#dimensions" className="hover:text-foreground transition-colors">Framework</a>
             <a href="#how-it-works" className="hover:text-foreground transition-colors">How it works</a>
             <a href="#mastery-score" className="hover:text-foreground transition-colors">Mastery Score™</a>
@@ -174,14 +174,14 @@ export function LandingPage({ isAuthenticated }: LandingPageProps) {
             {!isAuthenticated && (
               <Link
                 href="/login"
-                className="hidden sm:block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="hidden sm:block text-base text-muted-foreground hover:text-foreground transition-colors"
               >
                 Sign in
               </Link>
             )}
             <Link
               href={primaryHref}
-              className="btn-gold px-4 py-2 rounded-lg text-sm transition-colors"
+              className="btn-gold px-5 py-2.5 rounded-lg text-base transition-colors"
             >
               {isAuthenticated ? "Dashboard" : "Get started"}
             </Link>
